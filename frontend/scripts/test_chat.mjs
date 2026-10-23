@@ -9,7 +9,7 @@ const id = (q) => { const r = reply(index, q); return r.hits[0]?.f.id ?? (r.text
 const cases = [
   ["What's his tech stack?", "skills"], ["Does he know PyTorch?", "skills"], ["which programming languages", "skills"],
   ["Tell me about the medical project", "medical"], ["how accurate is the symptom checker", "medical"],
-  ["what is the harness", "harness"], ["do the agents loop forever", "harness"],
+  ["what is the harness", "harness"], ["explain the transformer you built", "tinylm"], ["has he trained a language model from scratch", "tinylm"], ["do the agents loop forever", "harness"],
   ["explain the MLOps agent", "mlops"], ["can it deploy with docker", "mlops"],
   ["restaurant sales forecasting", "forecast"], ["what is MAPE for SARIMA", "forecast"],
   ["what is Prahar", "none"], ["government schemes assistant", "none"],

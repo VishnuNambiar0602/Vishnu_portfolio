@@ -9,3 +9,9 @@ __pycache__/
 .venv/
 .env
 *.pem
+
+# Tiny LM training artefacts (regenerate with python train_demo.py) and Next.js build output
+tiny-lm/demo/
+.next/
+.hypothesis/
+*.tsbuildinfo

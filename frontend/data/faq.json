@@ -47,7 +47,7 @@
       "build",
       "best"
     ],
-    "text": "Four projects are on this page, each with a live demo: Medical XAI (explainable symptom checker), the Autonomous Engineering Harness (bounded multi-agent coder), the MLOps Agent (Python model to deployable project) and Restaurant Forecasting (revenue and footfall).",
+    "text": "Five projects are on this page, each with a live demo: Medical XAI (explainable symptom checker), Tiny LM (a transformer language model written from scratch), the Autonomous Engineering Harness (bounded multi-agent coder), the MLOps Agent (Python model to deployable project) and Restaurant Forecasting (revenue and footfall).",
     "link": {
       "label": "Open the projects",
       "href": "#projects"
@@ -121,6 +121,31 @@
     "link": {
       "label": "Browse the generated files",
       "href": "#project-mlops"
+    }
+  },
+  {
+    "id": "tinylm",
+    "keywords": [
+      "tiny",
+      "lm",
+      "transformer",
+      "transformers",
+      "language",
+      "model",
+      "llm",
+      "attention",
+      "pytorch",
+      "scratch",
+      "gpt",
+      "generate",
+      "heatmap",
+      "neural",
+      "tokenizer"
+    ],
+    "text": "Tiny LM is a decoder-only transformer language model written from scratch in PyTorch: tokenizer, multi-head attention, pre-norm blocks, a training loop and sampling, with 67 tests and an interactive teaching site. The model on this page has 0.82M parameters and runs in your browser; on held-out text its perplexity is 10.7, against 97 for random guessing.",
+    "link": {
+      "label": "Try Tiny LM",
+      "href": "#project-tinylm"
     }
   },
   {
@@ -287,7 +312,7 @@
       "vitae",
       "pdf"
     ],
-    "text": "Use the Download resume button at the top of this page. It generates a one-page, text-based PDF in your browser."
+    "text": "Use the Download resume button at the top of this page. It generates a one-page, text-based PDF in your browser. For a plain-text copy of the whole site, flip the Human / Machine switch in the header and press Download as .txt."
   },
   {
     "id": "location",
@@ -349,7 +374,12 @@
       "slm",
       "llm",
       "privacy",
-      "data"
+      "data",
+      "machine",
+      "readable",
+      "plain",
+      "text",
+      "txt"
     ],
     "text": "This site is plain HTML, CSS and JavaScript with no tracking. The demos run in your browser. This chat uses a small on-device language model (MiniLM) to match your question to verified facts about Vishnu by meaning, so every answer is a fact and nothing is invented. Nothing you type leaves your browser."
   }

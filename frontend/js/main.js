@@ -1,4 +1,4 @@
-import { REPOS } from "./config.js";
+import { REPOS, EDUCATOR_URL, MEDICAL_API_URL } from "./config.js";
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 const mounted = new Set();
@@ -9,6 +9,7 @@ const demos = {
   harness: () => import("./harness-ui.js").then((m) => m.mount()),
   mlops: () => import("./mlops-ui.js").then((m) => m.mount()),
   forecast: () => import("./forecast-ui.js").then((m) => m.mount()),
+  tinylm: () => import("./tinylm-ui.js").then((m) => m.mount()),
 };
 
 function showError(panel, err) {
@@ -61,6 +62,14 @@ if (!openFromHash()) select(tabs[0]);
 // Source links point at each project repository (see js/config.js) (see js/config.js).
 document.querySelectorAll("a[data-repo]").forEach((a) => { a.href = REPOS[a.dataset.repo]; });
 
+// Optional live links, shown only once their URLs are set in config.js.
+for (const [panel, url, label] of [["panel-tinylm", EDUCATOR_URL, "Interactive lessons"], ["panel-medical", MEDICAL_API_URL && `${MEDICAL_API_URL}/health`, "Live API (health check)"]]) {
+  if (!url) continue;
+  const li = document.createElement("li"), a = document.createElement("a");
+  a.href = url; a.textContent = label; li.append(a);
+  document.querySelector(`#${panel} .links`).append(li);
+}
+
 // Highlight the nav item for the section in view.
 const links = [...document.querySelectorAll(".site-nav a")];
 const sections = links.map((a) => document.querySelector(a.getAttribute("href")));
@@ -86,6 +95,43 @@ resumeBtn.addEventListener("click", async () => {
   }
   resumeBtn.disabled = false;
 });
+
+// Human / machine toggle. Machine view is the whole site as plain text, with a .txt download.
+const modeBtn = document.getElementById("mode-toggle");
+const machineSec = document.getElementById("machine");
+const machinePre = document.getElementById("machine-text");
+let humanScroll = 0;
+async function setMachine(on, { remember = true } = {}) {
+  modeBtn.setAttribute("aria-checked", String(on));
+  if (on) {
+    humanScroll = scrollY;
+    machinePre.textContent = "Building the text version...";
+    document.body.classList.add("machine"); machineSec.hidden = false;
+    scrollTo(0, 0);
+    try {
+      const { buildSiteText } = await import("./machine.js");
+      machinePre.textContent = await buildSiteText();
+    } catch (err) {
+      machinePre.textContent = `Could not build the text version (${err.message}).`;
+    }
+  } else {
+    machineSec.hidden = true; document.body.classList.remove("machine");
+    scrollTo(0, humanScroll);
+  }
+  if (remember) history.replaceState(null, "", on ? "#machine" : location.pathname + location.search);
+}
+modeBtn.addEventListener("click", () => setMachine(modeBtn.getAttribute("aria-checked") !== "true"));
+document.getElementById("machine-download").addEventListener("click", async () => {
+  const { buildSiteText, downloadText } = await import("./machine.js");
+  downloadText(await buildSiteText());
+});
+document.getElementById("machine-copy").addEventListener("click", async (e) => {
+  const { buildSiteText } = await import("./machine.js");
+  const note = document.getElementById("machine-note");
+  try { await navigator.clipboard.writeText(await buildSiteText()); note.textContent = "Copied the whole text to your clipboard."; }
+  catch { note.textContent = "Could not copy automatically. Select the text and copy it."; }
+});
+if (location.hash === "#machine") setMachine(true, { remember: false });
 
 import("./contact.js").then((m) => m.mount());
 import("./chat/chat.js").then((m) => m.mountChat()).catch(() => {});

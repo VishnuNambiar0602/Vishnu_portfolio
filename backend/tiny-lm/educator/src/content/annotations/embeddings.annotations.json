@@ -1,0 +1,125 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\embeddings.py",
+  "annotations": [
+    {
+      "lineStart": 13,
+      "lineEnd": 59,
+      "text": "Line 13: `class EmbeddingLayer(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 33,
+      "text": "Function `__init__` \u2014 takes self, vocab_size, d_model. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 36,
+      "lineEnd": 45,
+      "text": "Function `_build_pe` \u2014 takes max_len, d_model. Build sinusoidal positional encoding matrix [max_len, d_model].",
+      "level": "function"
+    },
+    {
+      "lineStart": 47,
+      "lineEnd": 59,
+      "text": "Function `forward` \u2014 takes self, token_ids. Return embeddings + positional encoding.\n\nArgs:\n    token_ids: Integer tensor of shape ``[batch, seq_len]``.\n\nReturns:\n    Float tensor of shape ``[batch, seq_len, d_model]``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 28,
+      "text": "Line 25: `if not isinstance(d_model, int) or d_model <= 0 or d_model % 2 != 0:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 29,
+      "lineEnd": 29,
+      "text": "Line 29: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 30,
+      "lineEnd": 30,
+      "text": "Line 30: `self.d_model = d_model`",
+      "level": "line"
+    },
+    {
+      "lineStart": 31,
+      "lineEnd": 31,
+      "text": "Line 31: `self.token_emb = nn.Embedding(vocab_size, d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 33,
+      "lineEnd": 33,
+      "text": "Line 33: `self.register_buffer(\"pe\", self._build_pe(4096, d_model))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 38,
+      "text": "Line 38: `pe = torch.zeros(max_len, d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 39,
+      "lineEnd": 39,
+      "text": "Line 39: `pos = torch.arange(max_len).unsqueeze(1).float()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 40,
+      "lineEnd": 42,
+      "text": "Line 40: `div = torch.exp(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 43,
+      "lineEnd": 43,
+      "text": "Line 43: `pe[:, 0::2] = torch.sin(pos * div)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 44,
+      "lineEnd": 44,
+      "text": "Line 44: `pe[:, 1::2] = torch.cos(pos * div)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 45,
+      "lineEnd": 45,
+      "text": "Line 45: `return pe  # [max_len, d_model]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 56,
+      "lineEnd": 56,
+      "text": "Line 56: `seq_len = token_ids.size(1)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 57,
+      "lineEnd": 57,
+      "text": "Line 57: `x = self.token_emb(token_ids)          # [batch, seq_len, d_model]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 58,
+      "lineEnd": 58,
+      "text": "Line 58: `x = x + self.pe[:seq_len]              # broadcast over batch`",
+      "level": "line"
+    },
+    {
+      "lineStart": 59,
+      "lineEnd": 59,
+      "text": "Line 59: `return x`",
+      "level": "line"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 28,
+      "text": "Line 26: `raise ConfigError(`",
+      "level": "line"
+    }
+  ]
+}

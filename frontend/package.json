@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Static portfolio site. Dev dependencies are only for the resume tests.",
   "scripts": {
-    "test": "node scripts/check_medical_parity.mjs && node scripts/check_forecast_parity.mjs && node scripts/check_deps_parity.mjs && node scripts/test_chat.mjs && node scripts/test_resume.mjs"
+    "test": "node scripts/check_medical_parity.mjs && node scripts/check_forecast_parity.mjs && node scripts/check_deps_parity.mjs && node scripts/check_tinylm_parity.mjs && node scripts/test_chat.mjs && node scripts/test_resume.mjs"
   },
   "devDependencies": {
     "jspdf": "4.2.1"

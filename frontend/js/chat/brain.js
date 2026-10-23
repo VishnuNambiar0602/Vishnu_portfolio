@@ -1,7 +1,7 @@
 // Retrieval over data/faq.json. The default bot only ever replies with these curated facts,
 // so it cannot invent anything about Vishnu. The optional language model gets the same facts as context.
 
-const STOP = new Set("a an and are as at be but by can do does for from has have he her him his how i if in into is it its me my of on or our she so that the their them there they this to was we were what when where which who why will with would you your tell about please where any done ever some many much get got does did".split(" "));
+const STOP = new Set("a an and are as at be but by can do does for from has have he her him his how i if in into is it its me my of on or our she so that the their them there they this to was we were what when where which who why will with would you your tell about please where any done ever some many much get got does did explain describe show".split(" "));
 
 const tokens = (s) => (s.toLowerCase().match(/[a-z0-9+#.\-]{2,}/g) || []).map((w) => w.replace(/^[.\-]+|[.\-]+$/g, "")).filter((w) => w && !STOP.has(w));
 // Light stemming so "projects" matches "project" and "built" matches "build".

@@ -1,0 +1,19 @@
+# Render Blueprint: Render, New, Blueprint, pick this repository.
+# The portfolio site itself is static and lives on Vercel. Only the Medical XAI API needs a server.
+services:
+  - type: web
+    name: medical-xai-api
+    runtime: python
+    plan: free
+    rootDir: backend/medical-xai/Medical-XAI/backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: FLASK_DEBUG
+        value: "false"
+      - key: ALLOWED_ORIGINS
+        sync: false # Render asks for it: your Vercel site URL, for example https://vishnu-portfolio.vercel.app

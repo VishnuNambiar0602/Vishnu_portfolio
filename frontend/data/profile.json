@@ -237,6 +237,67 @@
       "url": "https://github.com/VishnuNambiar0602/Medical-Reporter"
     },
     {
+      "name": "Tiny LM: Transformer Language Model from Scratch",
+      "stack": "Python, PyTorch, Next.js",
+      "dates": "Apr 2026",
+      "link": "github.com/VishnuNambiar0602/Vishnu_portfolio (tiny-lm)",
+      "url": "https://github.com/VishnuNambiar0602/Vishnu_portfolio/tree/main/backend/tiny-lm",
+      "tags": [
+        "llm",
+        "transformer",
+        "transformers",
+        "pytorch",
+        "nlp",
+        "generative ai",
+        "deep learning",
+        "python",
+        "attention",
+        "language model"
+      ],
+      "bullets": [
+        {
+          "text": "Implemented a decoder-only transformer from scratch in PyTorch (tokenizer, multi-head attention, pre-norm blocks, training loop, greedy, temperature and top-k sampling) with 67 passing tests.",
+          "tags": [
+            "llm",
+            "transformer",
+            "transformers",
+            "pytorch",
+            "nlp",
+            "generative ai",
+            "deep learning",
+            "attention",
+            "language model",
+            "testing",
+            "python"
+          ]
+        },
+        {
+          "text": "Trained an 816K-parameter model on 718K characters (held-out perplexity 10.7 against 97 for random guessing) and ported inference to JavaScript, matching PyTorch logits to within 0.0001.",
+          "tags": [
+            "evaluation",
+            "benchmark",
+            "deployment",
+            "javascript",
+            "pytorch",
+            "metrics",
+            "training",
+            "llm"
+          ]
+        },
+        {
+          "text": "Built a static Next.js teaching site with annotated code, diagrams and exercises (26 tests), and fixed its broken build.",
+          "tags": [
+            "react",
+            "nextjs",
+            "typescript",
+            "full-stack",
+            "teaching",
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Autonomous Engineering Harness",
       "stack": "Python, OpenRouter, Pydantic, pytest",
       "dates": "Sep 2026",
@@ -478,6 +539,16 @@
             "large language model",
             "large language models",
             "prompt engineering"
+          ]
+        },
+        {
+          "name": "Transformers (from scratch)",
+          "aliases": [
+            "transformer",
+            "transformers",
+            "attention",
+            "language model",
+            "language models"
           ]
         },
         {
@@ -754,7 +825,6 @@
       "aliases": [
         "hugging face",
         "huggingface",
-        "transformers",
         "bert",
         "fine-tuning",
         "fine tuning",

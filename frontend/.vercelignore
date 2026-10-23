@@ -1,0 +1,12 @@
+# Not part of the site. (Vercel deploys from git, which already excludes the private files; this covers
+# deploys made with the Vercel CLI from a local folder.)
+js/private/
+PRIVATE.md
+node_modules/
+scripts/
+tests/
+package.json
+package-lock.json
+DESIGN.md
+README.md
+.nojekyll

@@ -1,0 +1,71 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\transformer_block.py",
+  "annotations": [
+    {
+      "lineStart": 12,
+      "lineEnd": 46,
+      "text": "Line 12: `class TransformerBlock(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 21,
+      "lineEnd": 28,
+      "text": "Function `__init__` \u2014 takes self, d_model, n_heads, d_ff. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 30,
+      "lineEnd": 46,
+      "text": "Function `forward` \u2014 takes self, x, mask. Forward pass with pre-norm and residual connections.\n\nArgs:\n    x: Input tensor ``[batch, seq_len, d_model]``.\n    mask: Optional causal mask.\n\nReturns:\n    Output tensor ``[batch, seq_len, d_model]``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 24,
+      "text": "Line 24: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 25,
+      "text": "Line 25: `self.norm1 = nn.LayerNorm(d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 26,
+      "text": "Line 26: `self.attn = MultiHeadAttention(d_model, n_heads)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 27,
+      "lineEnd": 27,
+      "text": "Line 27: `self.norm2 = nn.LayerNorm(d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 28,
+      "lineEnd": 28,
+      "text": "Line 28: `self.ffn = FeedForwardNetwork(d_model, d_ff)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 43,
+      "lineEnd": 43,
+      "text": "Line 43: `x = x + self.attn(self.norm1(x), mask)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 45,
+      "lineEnd": 45,
+      "text": "Line 45: `x = x + self.ffn(self.norm2(x))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 46,
+      "lineEnd": 46,
+      "text": "Line 46: `return x`",
+      "level": "line"
+    }
+  ]
+}

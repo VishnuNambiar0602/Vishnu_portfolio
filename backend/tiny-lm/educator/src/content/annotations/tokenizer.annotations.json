@@ -1,0 +1,593 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\tokenizer.py",
+  "annotations": [
+    {
+      "lineStart": 14,
+      "lineEnd": 14,
+      "text": "Line 14: `UNK_TOKEN = \"<UNK>\"`",
+      "level": "line"
+    },
+    {
+      "lineStart": 15,
+      "lineEnd": 15,
+      "text": "Line 15: `UNK_ID = 0`",
+      "level": "line"
+    },
+    {
+      "lineStart": 18,
+      "lineEnd": 186,
+      "text": "Line 18: `class Tokenizer:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 30,
+      "text": "Function `__init__` \u2014 takes self, scheme. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 36,
+      "lineEnd": 52,
+      "text": "Function `build_vocab` \u2014 takes self, corpus, save_path. Build vocabulary from *corpus* and persist it to *save_path* (JSON).",
+      "level": "function"
+    },
+    {
+      "lineStart": 54,
+      "lineEnd": 72,
+      "text": "Function `load_vocab` \u2014 takes self, path. Load vocabulary from a JSON file at *path*.\n\nRaises:\n    TokenizerError: If the file is missing or contains invalid JSON.",
+      "level": "function"
+    },
+    {
+      "lineStart": 78,
+      "lineEnd": 81,
+      "text": "Function `encode` \u2014 takes self, text. Encode *text* into a list of token IDs.",
+      "level": "function"
+    },
+    {
+      "lineStart": 83,
+      "lineEnd": 85,
+      "text": "Function `decode` \u2014 takes self, ids. Decode a list of token IDs back into a string.",
+      "level": "function"
+    },
+    {
+      "lineStart": 92,
+      "lineEnd": 94,
+      "text": "Function `vocab_size` \u2014 takes self. Number of tokens in the vocabulary (including UNK).",
+      "level": "function"
+    },
+    {
+      "lineStart": 100,
+      "lineEnd": 105,
+      "text": "Function `_tokenize` \u2014 takes self, text. Split *text* into tokens according to the current scheme.",
+      "level": "function"
+    },
+    {
+      "lineStart": 109,
+      "lineEnd": 132,
+      "text": "Function `_bpe_tokens` \u2014 takes self, corpus. Derive a BPE vocabulary from *corpus* (simplified, 256 merges).",
+      "level": "function"
+    },
+    {
+      "lineStart": 135,
+      "lineEnd": 142,
+      "text": "Function `_get_pairs` \u2014 takes word_freqs. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 145,
+      "lineEnd": 162,
+      "text": "Function `_merge_pair` \u2014 takes pair, word_freqs. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 164,
+      "lineEnd": 186,
+      "text": "Function `_bpe_encode` \u2014 takes self, text. Encode *text* using learned BPE merges.",
+      "level": "function"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 26,
+      "text": "Line 26: `self.scheme = scheme`",
+      "level": "line"
+    },
+    {
+      "lineStart": 28,
+      "lineEnd": 28,
+      "text": "Line 28: `self._vocab: dict[str, int] = {}`",
+      "level": "line"
+    },
+    {
+      "lineStart": 30,
+      "lineEnd": 30,
+      "text": "Line 30: `self._id_to_token: dict[int, str] = {}`",
+      "level": "line"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 41,
+      "text": "Line 38: `if self.scheme == \"char\":`",
+      "level": "line"
+    },
+    {
+      "lineStart": 44,
+      "lineEnd": 44,
+      "text": "Line 44: `vocab: dict[str, int] = {UNK_TOKEN: UNK_ID}`",
+      "level": "line"
+    },
+    {
+      "lineStart": 45,
+      "lineEnd": 46,
+      "text": "Line 45: `for i, tok in enumerate(tokens, start=1):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 48,
+      "lineEnd": 48,
+      "text": "Line 48: `self._vocab = vocab`",
+      "level": "line"
+    },
+    {
+      "lineStart": 49,
+      "lineEnd": 49,
+      "text": "Line 49: `self._id_to_token = {v: k for k, v in vocab.items()}`",
+      "level": "line"
+    },
+    {
+      "lineStart": 51,
+      "lineEnd": 52,
+      "text": "Line 51: `with open(save_path, \"w\", encoding=\"utf-8\") as f:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 60,
+      "lineEnd": 64,
+      "text": "Line 60: `try:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 66,
+      "lineEnd": 69,
+      "text": "Line 66: `try:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 71,
+      "lineEnd": 71,
+      "text": "Line 71: `self._vocab = vocab`",
+      "level": "line"
+    },
+    {
+      "lineStart": 72,
+      "lineEnd": 72,
+      "text": "Line 72: `self._id_to_token = {v: k for k, v in vocab.items()}`",
+      "level": "line"
+    },
+    {
+      "lineStart": 80,
+      "lineEnd": 80,
+      "text": "Line 80: `tokens = self._tokenize(text)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 81,
+      "lineEnd": 81,
+      "text": "Line 81: `return [self._vocab.get(tok, UNK_ID) for tok in tokens]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 85,
+      "lineEnd": 85,
+      "text": "Line 85: `return \"\".join(self._id_to_token.get(i, UNK_TOKEN) for i in ids)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 94,
+      "lineEnd": 94,
+      "text": "Line 94: `return len(self._vocab)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 102,
+      "lineEnd": 103,
+      "text": "Line 102: `if self.scheme == \"char\":`",
+      "level": "line"
+    },
+    {
+      "lineStart": 105,
+      "lineEnd": 105,
+      "text": "Line 105: `return self._bpe_encode(text)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 112,
+      "lineEnd": 112,
+      "text": "Line 112: `words = corpus.split()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 113,
+      "lineEnd": 113,
+      "text": "Line 113: `word_freqs: Counter[tuple[str, ...]] = Counter()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 114,
+      "lineEnd": 115,
+      "text": "Line 114: `for w in words:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 117,
+      "lineEnd": 117,
+      "text": "Line 117: `vocab_set: set[str] = set()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 118,
+      "lineEnd": 119,
+      "text": "Line 118: `for chars in word_freqs:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 121,
+      "lineEnd": 121,
+      "text": "Line 121: `merges: list[tuple[str, str]] = []`",
+      "level": "line"
+    },
+    {
+      "lineStart": 122,
+      "lineEnd": 129,
+      "text": "Line 122: `for _ in range(256):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 131,
+      "lineEnd": 131,
+      "text": "Line 131: `self._merges = merges`",
+      "level": "line"
+    },
+    {
+      "lineStart": 132,
+      "lineEnd": 132,
+      "text": "Line 132: `return sorted(vocab_set)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 138,
+      "lineEnd": 138,
+      "text": "Line 138: `pairs: Counter[tuple[str, str]] = Counter()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 139,
+      "lineEnd": 141,
+      "text": "Line 139: `for word, freq in word_freqs.items():`",
+      "level": "line"
+    },
+    {
+      "lineStart": 142,
+      "lineEnd": 142,
+      "text": "Line 142: `return pairs`",
+      "level": "line"
+    },
+    {
+      "lineStart": 149,
+      "lineEnd": 149,
+      "text": "Line 149: `new_freqs: Counter[tuple[str, ...]] = Counter()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 150,
+      "lineEnd": 150,
+      "text": "Line 150: `merged = pair[0] + pair[1]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 151,
+      "lineEnd": 161,
+      "text": "Line 151: `for word, freq in word_freqs.items():`",
+      "level": "line"
+    },
+    {
+      "lineStart": 162,
+      "lineEnd": 162,
+      "text": "Line 162: `return new_freqs`",
+      "level": "line"
+    },
+    {
+      "lineStart": 166,
+      "lineEnd": 168,
+      "text": "Line 166: `if not hasattr(self, \"_merges\"):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 169,
+      "lineEnd": 169,
+      "text": "Line 169: `words = text.split()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 170,
+      "lineEnd": 170,
+      "text": "Line 170: `result: list[str] = []`",
+      "level": "line"
+    },
+    {
+      "lineStart": 171,
+      "lineEnd": 185,
+      "text": "Line 171: `for word in words:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 186,
+      "lineEnd": 186,
+      "text": "Line 186: `return result`",
+      "level": "line"
+    },
+    {
+      "lineStart": 39,
+      "lineEnd": 39,
+      "text": "Line 39: `tokens = sorted(set(corpus))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 41,
+      "lineEnd": 41,
+      "text": "Line 41: `tokens = self._bpe_tokens(corpus)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 46,
+      "lineEnd": 46,
+      "text": "Line 46: `vocab[tok] = i`",
+      "level": "line"
+    },
+    {
+      "lineStart": 52,
+      "lineEnd": 52,
+      "text": "Line 52: `json.dump(vocab, f, ensure_ascii=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 61,
+      "lineEnd": 62,
+      "text": "Line 61: `with open(path, encoding=\"utf-8\") as f:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 67,
+      "lineEnd": 67,
+      "text": "Line 67: `vocab: dict[str, int] = json.loads(raw)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 103,
+      "lineEnd": 103,
+      "text": "Line 103: `return list(text)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 115,
+      "lineEnd": 115,
+      "text": "Line 115: `word_freqs[tuple(w)] += 1`",
+      "level": "line"
+    },
+    {
+      "lineStart": 119,
+      "lineEnd": 119,
+      "text": "Line 119: `vocab_set.update(chars)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 123,
+      "lineEnd": 123,
+      "text": "Line 123: `pairs = self._get_pairs(word_freqs)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 124,
+      "lineEnd": 125,
+      "text": "Line 124: `if not pairs:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 126,
+      "lineEnd": 126,
+      "text": "Line 126: `best = max(pairs, key=lambda p: pairs[p])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 127,
+      "lineEnd": 127,
+      "text": "Line 127: `merges.append(best)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 128,
+      "lineEnd": 128,
+      "text": "Line 128: `word_freqs = self._merge_pair(best, word_freqs)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 129,
+      "lineEnd": 129,
+      "text": "Line 129: `vocab_set.add(best[0] + best[1])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 140,
+      "lineEnd": 141,
+      "text": "Line 140: `for a, b in zip(word, word[1:]):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 152,
+      "lineEnd": 152,
+      "text": "Line 152: `new_word: list[str] = []`",
+      "level": "line"
+    },
+    {
+      "lineStart": 153,
+      "lineEnd": 153,
+      "text": "Line 153: `i = 0`",
+      "level": "line"
+    },
+    {
+      "lineStart": 154,
+      "lineEnd": 160,
+      "text": "Line 154: `while i < len(word):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 161,
+      "lineEnd": 161,
+      "text": "Line 161: `new_freqs[tuple(new_word)] += freq`",
+      "level": "line"
+    },
+    {
+      "lineStart": 168,
+      "lineEnd": 168,
+      "text": "Line 168: `return list(text)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 172,
+      "lineEnd": 172,
+      "text": "Line 172: `chars = list(word)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 173,
+      "lineEnd": 184,
+      "text": "Line 173: `for pair in self._merges:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 185,
+      "lineEnd": 185,
+      "text": "Line 185: `result.extend(chars)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 62,
+      "lineEnd": 62,
+      "text": "Line 62: `raw = f.read()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 64,
+      "lineEnd": 64,
+      "text": "Line 64: `raise TokenizerError(f\"Vocab file not found: {path}\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 69,
+      "lineEnd": 69,
+      "text": "Line 69: `raise TokenizerError(f\"Vocab file corrupt at {path}: {exc}\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 125,
+      "lineEnd": 125,
+      "text": "Line 125: `break`",
+      "level": "line"
+    },
+    {
+      "lineStart": 141,
+      "lineEnd": 141,
+      "text": "Line 141: `pairs[(a, b)] += freq`",
+      "level": "line"
+    },
+    {
+      "lineStart": 155,
+      "lineEnd": 160,
+      "text": "Line 155: `if i < len(word) - 1 and word[i] == pair[0] and word[i + 1] == pair[1]:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 174,
+      "lineEnd": 174,
+      "text": "Line 174: `merged = pair[0] + pair[1]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 175,
+      "lineEnd": 175,
+      "text": "Line 175: `i = 0`",
+      "level": "line"
+    },
+    {
+      "lineStart": 176,
+      "lineEnd": 176,
+      "text": "Line 176: `new_chars: list[str] = []`",
+      "level": "line"
+    },
+    {
+      "lineStart": 177,
+      "lineEnd": 183,
+      "text": "Line 177: `while i < len(chars):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 184,
+      "lineEnd": 184,
+      "text": "Line 184: `chars = new_chars`",
+      "level": "line"
+    },
+    {
+      "lineStart": 156,
+      "lineEnd": 156,
+      "text": "Line 156: `new_word.append(merged)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 157,
+      "lineEnd": 157,
+      "text": "Line 157: `i += 2`",
+      "level": "line"
+    },
+    {
+      "lineStart": 159,
+      "lineEnd": 159,
+      "text": "Line 159: `new_word.append(word[i])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 160,
+      "lineEnd": 160,
+      "text": "Line 160: `i += 1`",
+      "level": "line"
+    },
+    {
+      "lineStart": 178,
+      "lineEnd": 183,
+      "text": "Line 178: `if i < len(chars) - 1 and chars[i] == pair[0] and chars[i + 1] == pair[1]:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 179,
+      "lineEnd": 179,
+      "text": "Line 179: `new_chars.append(merged)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 180,
+      "lineEnd": 180,
+      "text": "Line 180: `i += 2`",
+      "level": "line"
+    },
+    {
+      "lineStart": 182,
+      "lineEnd": 182,
+      "text": "Line 182: `new_chars.append(chars[i])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 183,
+      "lineEnd": 183,
+      "text": "Line 183: `i += 1`",
+      "level": "line"
+    }
+  ]
+}

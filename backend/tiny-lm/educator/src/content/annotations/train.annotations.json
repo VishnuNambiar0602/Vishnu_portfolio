@@ -1,0 +1,365 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\train.py",
+  "annotations": [
+    {
+      "lineStart": 17,
+      "lineEnd": 25,
+      "text": "Function `_latest_checkpoint` \u2014 takes output_dir. Return the path of the latest checkpoint in *output_dir*, or None.",
+      "level": "function"
+    },
+    {
+      "lineStart": 28,
+      "lineEnd": 43,
+      "text": "Function `_make_batches` \u2014 takes token_ids, seq_len, batch_size. Slice token_ids into non-overlapping batches of shape [batch, seq_len].",
+      "level": "function"
+    },
+    {
+      "lineStart": 46,
+      "lineEnd": 136,
+      "text": "Function `train` \u2014 takes model, config, corpus_path, output_dir. Train *model* on the text corpus at *corpus_path*.\n\nArgs:\n    model: The TinyLM model to train.\n    config: Training hyperparameters.\n    corpus_path: Path to a plain-text corpus file.\n    output_dir: Directory where checkpoints are saved.",
+      "level": "function"
+    },
+    {
+      "lineStart": 19,
+      "lineEnd": 19,
+      "text": "Line 19: `pattern = os.path.join(output_dir, \"checkpoint_*.pt\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 20,
+      "lineEnd": 20,
+      "text": "Line 20: `files = glob.glob(pattern)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 21,
+      "lineEnd": 22,
+      "text": "Line 21: `if not files:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 24,
+      "text": "Line 24: `files.sort(key=lambda p: int(os.path.splitext(os.path.basename(p))[0].split(\"_\")[1]))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 25,
+      "text": "Line 25: `return files[-1]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 33,
+      "lineEnd": 33,
+      "text": "Line 33: `total = (len(token_ids) // seq_len) * seq_len`",
+      "level": "line"
+    },
+    {
+      "lineStart": 34,
+      "lineEnd": 34,
+      "text": "Line 34: `ids = torch.tensor(token_ids[:total], dtype=torch.long)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 35,
+      "lineEnd": 35,
+      "text": "Line 35: `chunks = ids.split(seq_len)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 37,
+      "lineEnd": 37,
+      "text": "Line 37: `chunks = [c for c in chunks if len(c) == seq_len]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 42,
+      "text": "Line 38: `batches = [`",
+      "level": "line"
+    },
+    {
+      "lineStart": 43,
+      "lineEnd": 43,
+      "text": "Line 43: `return batches`",
+      "level": "line"
+    },
+    {
+      "lineStart": 61,
+      "lineEnd": 61,
+      "text": "Line 61: `tokenizer = Tokenizer(scheme=\"char\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 62,
+      "lineEnd": 63,
+      "text": "Line 62: `with open(corpus_path, encoding=\"utf-8\") as f:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 64,
+      "lineEnd": 64,
+      "text": "Line 64: `vocab_path = os.path.join(output_dir, \"vocab.json\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 65,
+      "lineEnd": 65,
+      "text": "Line 65: `tokenizer.build_vocab(corpus, vocab_path)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 68,
+      "lineEnd": 68,
+      "text": "Line 68: `vocab_cap = model.config.vocab_size`",
+      "level": "line"
+    },
+    {
+      "lineStart": 71,
+      "lineEnd": 71,
+      "text": "Line 71: `raw_ids = tokenizer.encode(corpus)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 72,
+      "lineEnd": 72,
+      "text": "Line 72: `token_ids = [min(i, vocab_cap - 1) for i in raw_ids]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 73,
+      "lineEnd": 73,
+      "text": "Line 73: `seq_len = model.config.max_seq_len`",
+      "level": "line"
+    },
+    {
+      "lineStart": 74,
+      "lineEnd": 74,
+      "text": "Line 74: `batches = _make_batches(token_ids, seq_len, config.batch_size)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 75,
+      "lineEnd": 78,
+      "text": "Line 75: `if not batches:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 81,
+      "lineEnd": 84,
+      "text": "Line 81: `if config.optimizer == \"adam\":`",
+      "level": "line"
+    },
+    {
+      "lineStart": 86,
+      "lineEnd": 86,
+      "text": "Line 86: `criterion = nn.CrossEntropyLoss()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 89,
+      "lineEnd": 89,
+      "text": "Line 89: `start_step = 0`",
+      "level": "line"
+    },
+    {
+      "lineStart": 90,
+      "lineEnd": 90,
+      "text": "Line 90: `ckpt_path = _latest_checkpoint(output_dir)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 91,
+      "lineEnd": 95,
+      "text": "Line 91: `if ckpt_path:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 97,
+      "lineEnd": 97,
+      "text": "Line 97: `device = next(model.parameters()).device  # train on whatever device the model lives on`",
+      "level": "line"
+    },
+    {
+      "lineStart": 98,
+      "lineEnd": 98,
+      "text": "Line 98: `model.train()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 99,
+      "lineEnd": 99,
+      "text": "Line 99: `step = start_step`",
+      "level": "line"
+    },
+    {
+      "lineStart": 100,
+      "lineEnd": 100,
+      "text": "Line 100: `batch_idx = 0`",
+      "level": "line"
+    },
+    {
+      "lineStart": 102,
+      "lineEnd": 136,
+      "text": "Line 102: `while step < config.max_steps:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 22,
+      "lineEnd": 22,
+      "text": "Line 22: `return None`",
+      "level": "line"
+    },
+    {
+      "lineStart": 63,
+      "lineEnd": 63,
+      "text": "Line 63: `corpus = f.read()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 77,
+      "lineEnd": 77,
+      "text": "Line 77: `ids = torch.tensor(token_ids[:seq_len], dtype=torch.long).unsqueeze(0)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 78,
+      "lineEnd": 78,
+      "text": "Line 78: `batches = [ids]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 82,
+      "lineEnd": 82,
+      "text": "Line 82: `optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 84,
+      "lineEnd": 84,
+      "text": "Line 84: `optimizer = optim.SGD(model.parameters(), lr=config.learning_rate)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 92,
+      "lineEnd": 92,
+      "text": "Line 92: `state = torch.load(ckpt_path, weights_only=True, map_location=next(model.parameters()).device)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 93,
+      "lineEnd": 93,
+      "text": "Line 93: `model.load_state_dict(state[\"model\"])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 94,
+      "lineEnd": 94,
+      "text": "Line 94: `optimizer.load_state_dict(state[\"optimizer\"])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 95,
+      "lineEnd": 95,
+      "text": "Line 95: `start_step = state[\"step\"]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 103,
+      "lineEnd": 103,
+      "text": "Line 103: `batch = batches[batch_idx % len(batches)]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 105,
+      "lineEnd": 105,
+      "text": "Line 105: `batch = batch[:, : seq_len].to(device)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 108,
+      "lineEnd": 108,
+      "text": "Line 108: `inputs = batch[:, :-1]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 109,
+      "lineEnd": 109,
+      "text": "Line 109: `targets = batch[:, 1:]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 111,
+      "lineEnd": 111,
+      "text": "Line 111: `logits = model(inputs)  # [batch, seq-1, vocab]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 112,
+      "lineEnd": 115,
+      "text": "Line 112: `loss = criterion(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 117,
+      "lineEnd": 117,
+      "text": "Line 117: `optimizer.zero_grad()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 118,
+      "lineEnd": 118,
+      "text": "Line 118: `loss.backward()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 119,
+      "lineEnd": 119,
+      "text": "Line 119: `optimizer.step()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 121,
+      "lineEnd": 121,
+      "text": "Line 121: `step += 1`",
+      "level": "line"
+    },
+    {
+      "lineStart": 122,
+      "lineEnd": 122,
+      "text": "Line 122: `batch_idx += 1`",
+      "level": "line"
+    },
+    {
+      "lineStart": 124,
+      "lineEnd": 125,
+      "text": "Line 124: `if step % config.log_interval == 0:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 127,
+      "lineEnd": 136,
+      "text": "Line 127: `if step % config.checkpoint_interval == 0:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 125,
+      "lineEnd": 125,
+      "text": "Line 125: `print(f\"step={step}  loss={loss.item():.4f}\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 128,
+      "lineEnd": 128,
+      "text": "Line 128: `ckpt = os.path.join(output_dir, f\"checkpoint_{step}.pt\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 129,
+      "lineEnd": 136,
+      "text": "Line 129: `torch.save(`",
+      "level": "line"
+    }
+  ]
+}

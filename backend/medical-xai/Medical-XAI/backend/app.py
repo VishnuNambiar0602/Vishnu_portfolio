@@ -6,7 +6,9 @@ import logging
 import os
 
 app = Flask(__name__)
-CORS(app)
+# Browsers may call this API from the portfolio site. Set ALLOWED_ORIGINS (comma-separated) to restrict it.
+_origins = [o.strip() for o in os.environ.get('ALLOWED_ORIGINS', '*').split(',') if o.strip()]
+CORS(app, origins=_origins)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -325,5 +327,5 @@ def internal_error(error):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    debug = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+    debug = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
     app.run(host='0.0.0.0', port=port, debug=debug)

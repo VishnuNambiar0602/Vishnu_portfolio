@@ -1,0 +1,215 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\inference.py",
+  "annotations": [
+    {
+      "lineStart": 15,
+      "lineEnd": 92,
+      "text": "Line 15: `class InferenceEngine:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 18,
+      "lineEnd": 20,
+      "text": "Function `__init__` \u2014 takes self, model, tokenizer. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 23,
+      "lineEnd": 38,
+      "text": "Function `from_checkpoint` \u2014 takes cls, checkpoint_path, model, tokenizer. Load model weights from *checkpoint_path*.\n\nRaises:\n    CheckpointError: If the file is missing or corrupt.",
+      "level": "function"
+    },
+    {
+      "lineStart": 40,
+      "lineEnd": 54,
+      "text": "Function `generate` \u2014 takes self, prompt, max_new_tokens, strategy, temperature, top_k. Generate a text continuation for *prompt*.\n\nReturns:\n    Generated text string (not including the prompt).",
+      "level": "function"
+    },
+    {
+      "lineStart": 56,
+      "lineEnd": 92,
+      "text": "Function `_generate_ids` \u2014 takes self, prompt, max_new_tokens, strategy, temperature, top_k. Return the raw list of generated token IDs (length == max_new_tokens).",
+      "level": "function"
+    },
+    {
+      "lineStart": 19,
+      "lineEnd": 19,
+      "text": "Line 19: `self.model = model`",
+      "level": "line"
+    },
+    {
+      "lineStart": 20,
+      "lineEnd": 20,
+      "text": "Line 20: `self.tokenizer = tokenizer`",
+      "level": "line"
+    },
+    {
+      "lineStart": 31,
+      "lineEnd": 36,
+      "text": "Line 31: `try:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 37,
+      "lineEnd": 37,
+      "text": "Line 37: `model.load_state_dict(state[\"model\"])`",
+      "level": "line"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 38,
+      "text": "Line 38: `return cls(model, tokenizer)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 53,
+      "lineEnd": 53,
+      "text": "Line 53: `ids = self._generate_ids(prompt, max_new_tokens, strategy, temperature, top_k)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 54,
+      "lineEnd": 54,
+      "text": "Line 54: `return self.tokenizer.decode(ids)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 65,
+      "lineEnd": 65,
+      "text": "Line 65: `self.model.eval()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 66,
+      "lineEnd": 66,
+      "text": "Line 66: `input_ids = torch.tensor([self.tokenizer.encode(prompt)], dtype=torch.long)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 67,
+      "lineEnd": 67,
+      "text": "Line 67: `generated: list[int] = []`",
+      "level": "line"
+    },
+    {
+      "lineStart": 69,
+      "lineEnd": 90,
+      "text": "Line 69: `with torch.no_grad():`",
+      "level": "line"
+    },
+    {
+      "lineStart": 92,
+      "lineEnd": 92,
+      "text": "Line 92: `return generated`",
+      "level": "line"
+    },
+    {
+      "lineStart": 32,
+      "lineEnd": 32,
+      "text": "Line 32: `state = torch.load(checkpoint_path, weights_only=True)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 70,
+      "lineEnd": 90,
+      "text": "Line 70: `for _ in range(max_new_tokens):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 34,
+      "lineEnd": 36,
+      "text": "Line 34: `raise CheckpointError(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 71,
+      "lineEnd": 71,
+      "text": "Line 71: `context = input_ids[:, -self.model.config.max_seq_len:]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 72,
+      "lineEnd": 72,
+      "text": "Line 72: `logits = self.model(context)        # [1, seq, vocab]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 73,
+      "lineEnd": 73,
+      "text": "Line 73: `next_logits = logits[0, -1, :]      # [vocab]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 75,
+      "lineEnd": 85,
+      "text": "Line 75: `if strategy == \"greedy\":`",
+      "level": "line"
+    },
+    {
+      "lineStart": 87,
+      "lineEnd": 87,
+      "text": "Line 87: `generated.append(next_id)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 88,
+      "lineEnd": 90,
+      "text": "Line 88: `input_ids = torch.cat(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 76,
+      "lineEnd": 76,
+      "text": "Line 76: `next_id = int(next_logits.argmax())`",
+      "level": "line"
+    },
+    {
+      "lineStart": 77,
+      "lineEnd": 85,
+      "text": "Line 77: `elif strategy == \"temperature\":`",
+      "level": "line"
+    },
+    {
+      "lineStart": 78,
+      "lineEnd": 78,
+      "text": "Line 78: `probs = F.softmax(next_logits / max(temperature, 1e-8), dim=-1)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 79,
+      "lineEnd": 79,
+      "text": "Line 79: `next_id = int(torch.multinomial(probs, num_samples=1))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 81,
+      "lineEnd": 81,
+      "text": "Line 81: `k = min(top_k, next_logits.size(-1))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 82,
+      "lineEnd": 82,
+      "text": "Line 82: `top_vals, top_ids = torch.topk(next_logits, k)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 83,
+      "lineEnd": 83,
+      "text": "Line 83: `probs = F.softmax(top_vals, dim=-1)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 84,
+      "lineEnd": 84,
+      "text": "Line 84: `idx = int(torch.multinomial(probs, num_samples=1))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 85,
+      "lineEnd": 85,
+      "text": "Line 85: `next_id = int(top_ids[idx])`",
+      "level": "line"
+    }
+  ]
+}

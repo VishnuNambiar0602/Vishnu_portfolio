@@ -1,0 +1,65 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\ffn.py",
+  "annotations": [
+    {
+      "lineStart": 10,
+      "lineEnd": 35,
+      "text": "Line 10: `class FeedForwardNetwork(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 18,
+      "lineEnd": 24,
+      "text": "Function `__init__` \u2014 takes self, d_model, d_ff. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 35,
+      "text": "Function `forward` \u2014 takes self, x. Apply FFN: Linear \u2192 GELU \u2192 Linear.\n\nArgs:\n    x: Input tensor of any shape ``[..., d_model]``.\n\nReturns:\n    Output tensor with the same shape as ``x``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 19,
+      "lineEnd": 19,
+      "text": "Line 19: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 20,
+      "lineEnd": 21,
+      "text": "Line 20: `if d_ff is None:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 22,
+      "lineEnd": 22,
+      "text": "Line 22: `self.d_ff = d_ff`",
+      "level": "line"
+    },
+    {
+      "lineStart": 23,
+      "lineEnd": 23,
+      "text": "Line 23: `self.fc1 = nn.Linear(d_model, d_ff)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 24,
+      "text": "Line 24: `self.fc2 = nn.Linear(d_ff, d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 35,
+      "lineEnd": 35,
+      "text": "Line 35: `return self.fc2(F.gelu(self.fc1(x)))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 21,
+      "lineEnd": 21,
+      "text": "Line 21: `d_ff = 4 * d_model`",
+      "level": "line"
+    }
+  ]
+}

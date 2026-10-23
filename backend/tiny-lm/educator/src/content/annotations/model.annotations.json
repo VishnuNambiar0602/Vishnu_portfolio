@@ -1,0 +1,113 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\model.py",
+  "annotations": [
+    {
+      "lineStart": 13,
+      "lineEnd": 55,
+      "text": "Line 13: `class TinyLM(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 23,
+      "lineEnd": 36,
+      "text": "Function `__init__` \u2014 takes self, config. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 51,
+      "text": "Function `forward` \u2014 takes self, token_ids. Run a forward pass and return logits.\n\nArgs:\n    token_ids: Integer tensor ``[batch, seq_len]``.\n\nReturns:\n    Logits tensor ``[batch, seq_len, vocab_size]``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 53,
+      "lineEnd": 55,
+      "text": "Function `num_parameters` \u2014 takes self. Return total number of trainable parameters.",
+      "level": "function"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 25,
+      "text": "Line 24: `if config.n_layers < 1:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 26,
+      "text": "Line 26: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 27,
+      "lineEnd": 27,
+      "text": "Line 27: `self.config = config`",
+      "level": "line"
+    },
+    {
+      "lineStart": 28,
+      "lineEnd": 28,
+      "text": "Line 28: `self.embedding = EmbeddingLayer(config.vocab_size, config.d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 29,
+      "lineEnd": 34,
+      "text": "Line 29: `self.blocks = nn.ModuleList(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 35,
+      "lineEnd": 35,
+      "text": "Line 35: `self.norm = nn.LayerNorm(config.d_model)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 36,
+      "lineEnd": 36,
+      "text": "Line 36: `self.head = nn.Linear(config.d_model, config.vocab_size, bias=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 47,
+      "lineEnd": 47,
+      "text": "Line 47: `x = self.embedding(token_ids)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 48,
+      "lineEnd": 49,
+      "text": "Line 48: `for block in self.blocks:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 50,
+      "lineEnd": 50,
+      "text": "Line 50: `x = self.norm(x)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 51,
+      "lineEnd": 51,
+      "text": "Line 51: `return self.head(x)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 55,
+      "lineEnd": 55,
+      "text": "Line 55: `return sum(p.numel() for p in self.parameters() if p.requires_grad)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 25,
+      "text": "Line 25: `raise ConfigError(f\"n_layers must be >= 1, got {config.n_layers}\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 49,
+      "lineEnd": 49,
+      "text": "Line 49: `x = block(x)`",
+      "level": "line"
+    }
+  ]
+}

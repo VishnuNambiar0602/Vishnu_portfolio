@@ -1,0 +1,209 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\config.py",
+  "annotations": [
+    {
+      "lineStart": 16,
+      "lineEnd": 17,
+      "text": "Line 16: `class TinyLMError(Exception):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 20,
+      "lineEnd": 21,
+      "text": "Line 20: `class ConfigError(TinyLMError):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 25,
+      "text": "Line 24: `class TokenizerError(TinyLMError):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 28,
+      "lineEnd": 29,
+      "text": "Line 28: `class CheckpointError(TinyLMError):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 38,
+      "lineEnd": 44,
+      "text": "Line 38: `class ModelConfig:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 48,
+      "lineEnd": 54,
+      "text": "Line 48: `class TrainConfig:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 61,
+      "lineEnd": 61,
+      "text": "Line 61: `_MODEL_KEYS = [\"d_model\", \"n_heads\", \"n_layers\", \"d_ff\", \"max_seq_len\", \"vocab_size\"]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 62,
+      "lineEnd": 69,
+      "text": "Line 62: `_TRAIN_KEYS = [`",
+      "level": "line"
+    },
+    {
+      "lineStart": 72,
+      "lineEnd": 119,
+      "text": "Function `load_config` \u2014 takes path. Load and validate configuration from a YAML file.\n\nArgs:\n    path: Path to the YAML configuration file.\n\nReturns:\n    A ``(ModelConfig, TrainConfig)`` tuple.\n\nRaises:\n    ConfigError: If any required key is missing from the file.\n    FileNotFoundError: If the file does not exist.",
+      "level": "function"
+    },
+    {
+      "lineStart": 39,
+      "lineEnd": 39,
+      "text": "Line 39: `d_model: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 40,
+      "lineEnd": 40,
+      "text": "Line 40: `n_heads: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 41,
+      "lineEnd": 41,
+      "text": "Line 41: `n_layers: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 42,
+      "lineEnd": 42,
+      "text": "Line 42: `d_ff: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 43,
+      "lineEnd": 43,
+      "text": "Line 43: `max_seq_len: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 44,
+      "lineEnd": 44,
+      "text": "Line 44: `vocab_size: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 49,
+      "lineEnd": 49,
+      "text": "Line 49: `batch_size: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 50,
+      "lineEnd": 50,
+      "text": "Line 50: `learning_rate: float`",
+      "level": "line"
+    },
+    {
+      "lineStart": 51,
+      "lineEnd": 51,
+      "text": "Line 51: `optimizer: Literal[\"sgd\", \"adam\"]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 52,
+      "lineEnd": 52,
+      "text": "Line 52: `checkpoint_interval: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 53,
+      "lineEnd": 53,
+      "text": "Line 53: `log_interval: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 54,
+      "lineEnd": 54,
+      "text": "Line 54: `max_steps: int`",
+      "level": "line"
+    },
+    {
+      "lineStart": 85,
+      "lineEnd": 86,
+      "text": "Line 85: `with open(path) as f:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 88,
+      "lineEnd": 88,
+      "text": "Line 88: `model_raw: dict = raw.get(\"model\", {})`",
+      "level": "line"
+    },
+    {
+      "lineStart": 89,
+      "lineEnd": 89,
+      "text": "Line 89: `train_raw: dict = raw.get(\"training\", {})`",
+      "level": "line"
+    },
+    {
+      "lineStart": 92,
+      "lineEnd": 94,
+      "text": "Line 92: `for key in _MODEL_KEYS:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 97,
+      "lineEnd": 99,
+      "text": "Line 97: `for key in _TRAIN_KEYS:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 101,
+      "lineEnd": 108,
+      "text": "Line 101: `model_cfg = ModelConfig(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 110,
+      "lineEnd": 117,
+      "text": "Line 110: `train_cfg = TrainConfig(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 119,
+      "lineEnd": 119,
+      "text": "Line 119: `return model_cfg, train_cfg`",
+      "level": "line"
+    },
+    {
+      "lineStart": 86,
+      "lineEnd": 86,
+      "text": "Line 86: `raw = yaml.safe_load(f)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 93,
+      "lineEnd": 94,
+      "text": "Line 93: `if key not in model_raw:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 98,
+      "lineEnd": 99,
+      "text": "Line 98: `if key not in train_raw:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 94,
+      "lineEnd": 94,
+      "text": "Line 94: `raise ConfigError(f\"Required config key '{key}' is missing\")`",
+      "level": "line"
+    },
+    {
+      "lineStart": 99,
+      "lineEnd": 99,
+      "text": "Line 99: `raise ConfigError(f\"Required config key '{key}' is missing\")`",
+      "level": "line"
+    }
+  ]
+}

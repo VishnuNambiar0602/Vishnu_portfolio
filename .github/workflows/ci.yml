@@ -1,11 +1,10 @@
-name: Test and deploy
+name: Tests
 on:
   push: { branches: [main] }
   pull_request:
   workflow_dispatch:
-permissions: { contents: read, pages: write, id-token: write }
-concurrency: { group: pages, cancel-in-progress: true }
 
+# Deployment is handled by Vercel (site, teaching site) and Render (API), which build from this repository.
 jobs:
   frontend:
     runs-on: ubuntu-latest
@@ -17,6 +16,41 @@ jobs:
         working-directory: frontend
       - run: npm test
         working-directory: frontend
+
+  medical-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt pytest
+        working-directory: backend/medical-xai/Medical-XAI/backend
+      - run: pytest -q test_api.py
+        working-directory: backend/medical-xai/Medical-XAI/backend
+
+  tiny-lm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install numpy pyyaml pytest hypothesis
+      - run: pytest -q
+        working-directory: backend/tiny-lm
+
+  tiny-lm-educator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+        working-directory: backend/tiny-lm/educator
+      - run: npm test
+        working-directory: backend/tiny-lm/educator
+      - run: npm run build
+        working-directory: backend/tiny-lm/educator
 
   forecasting:
     runs-on: ubuntu-latest
@@ -51,16 +85,3 @@ jobs:
         working-directory: backend/mlops-agent
       - run: npm run build && npm test
         working-directory: backend/mlops-agent
-
-  deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: [frontend, forecasting, harness, mlops-agent]
-    runs-on: ubuntu-latest
-    environment: { name: github-pages, url: "${{ steps.deploy.outputs.page_url }}" }
-    steps:
-      - uses: actions/checkout@v4
-      - run: rm -rf frontend/node_modules frontend/scripts frontend/tests frontend/package.json frontend/package-lock.json frontend/DESIGN.md frontend/README.md
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: frontend }
-      - id: deploy
-        uses: actions/deploy-pages@v4

@@ -1,0 +1,191 @@
+{
+  "sourceFile": "D:\\Projects\\Vishnu_Portfolio\\backend\\tiny-lm\\tiny_lm\\attention.py",
+  "annotations": [
+    {
+      "lineStart": 14,
+      "lineEnd": 57,
+      "text": "Line 14: `class AttentionHead(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 60,
+      "lineEnd": 97,
+      "text": "Line 60: `class MultiHeadAttention(nn.Module):`",
+      "level": "line"
+    },
+    {
+      "lineStart": 22,
+      "lineEnd": 27,
+      "text": "Function `__init__` \u2014 takes self, d_model, d_head. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 29,
+      "lineEnd": 57,
+      "text": "Function `forward` \u2014 takes self, x, mask. Compute attention output.\n\nArgs:\n    x: Input tensor ``[batch, seq_len, d_model]``.\n    mask: Optional boolean causal mask ``[seq_len, seq_len]``.\n\nReturns:\n    Output tensor ``[batch, seq_len, d_head]``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 71,
+      "lineEnd": 81,
+      "text": "Function `__init__` \u2014 takes self, d_model, n_heads. No docstring provided.",
+      "level": "function"
+    },
+    {
+      "lineStart": 83,
+      "lineEnd": 97,
+      "text": "Function `forward` \u2014 takes self, x, mask. Run all heads in parallel, concatenate, and project.\n\nArgs:\n    x: Input tensor ``[batch, seq_len, d_model]``.\n    mask: Optional causal mask.\n\nReturns:\n    Output tensor ``[batch, seq_len, d_model]``.",
+      "level": "function"
+    },
+    {
+      "lineStart": 23,
+      "lineEnd": 23,
+      "text": "Line 23: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 24,
+      "lineEnd": 24,
+      "text": "Line 24: `self.d_head = d_head`",
+      "level": "line"
+    },
+    {
+      "lineStart": 25,
+      "lineEnd": 25,
+      "text": "Line 25: `self.q = nn.Linear(d_model, d_head, bias=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 26,
+      "lineEnd": 26,
+      "text": "Line 26: `self.k = nn.Linear(d_model, d_head, bias=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 27,
+      "lineEnd": 27,
+      "text": "Line 27: `self.v = nn.Linear(d_model, d_head, bias=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 41,
+      "lineEnd": 41,
+      "text": "Line 41: `Q = self.q(x)  # [batch, seq_len, d_head]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 42,
+      "lineEnd": 42,
+      "text": "Line 42: `K = self.k(x)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 43,
+      "lineEnd": 43,
+      "text": "Line 43: `V = self.v(x)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 45,
+      "lineEnd": 45,
+      "text": "Line 45: `scale = math.sqrt(self.d_head)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 46,
+      "lineEnd": 46,
+      "text": "Line 46: `scores = torch.bmm(Q, K.transpose(1, 2)) / scale  # [batch, seq, seq]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 48,
+      "lineEnd": 52,
+      "text": "Line 48: `if mask is None:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 55,
+      "lineEnd": 55,
+      "text": "Line 55: `scores = scores.masked_fill(mask.unsqueeze(0), float(\"-inf\"))`",
+      "level": "line"
+    },
+    {
+      "lineStart": 56,
+      "lineEnd": 56,
+      "text": "Line 56: `weights = F.softmax(scores, dim=-1)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 57,
+      "lineEnd": 57,
+      "text": "Line 57: `return torch.bmm(weights, V)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 72,
+      "lineEnd": 75,
+      "text": "Line 72: `if d_model % n_heads != 0:`",
+      "level": "line"
+    },
+    {
+      "lineStart": 76,
+      "lineEnd": 76,
+      "text": "Line 76: `super().__init__()`",
+      "level": "line"
+    },
+    {
+      "lineStart": 77,
+      "lineEnd": 77,
+      "text": "Line 77: `self.d_head = d_model // n_heads`",
+      "level": "line"
+    },
+    {
+      "lineStart": 78,
+      "lineEnd": 80,
+      "text": "Line 78: `self.heads = nn.ModuleList(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 81,
+      "lineEnd": 81,
+      "text": "Line 81: `self.proj = nn.Linear(d_model, d_model, bias=False)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 95,
+      "lineEnd": 95,
+      "text": "Line 95: `head_outputs = [h(x, mask) for h in self.heads]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 96,
+      "lineEnd": 96,
+      "text": "Line 96: `concat = torch.cat(head_outputs, dim=-1)  # [batch, seq_len, d_model]`",
+      "level": "line"
+    },
+    {
+      "lineStart": 97,
+      "lineEnd": 97,
+      "text": "Line 97: `return self.proj(concat)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 49,
+      "lineEnd": 49,
+      "text": "Line 49: `seq_len = x.size(1)`",
+      "level": "line"
+    },
+    {
+      "lineStart": 50,
+      "lineEnd": 52,
+      "text": "Line 50: `mask = torch.triu(`",
+      "level": "line"
+    },
+    {
+      "lineStart": 73,
+      "lineEnd": 75,
+      "text": "Line 73: `raise ConfigError(`",
+      "level": "line"
+    }
+  ]
+}

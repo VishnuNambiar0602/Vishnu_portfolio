@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vishnu Nambiar · AI Engineer</title>
-<meta name="description" content="Portfolio of Vishnu Nambiar, an AI engineer building explainable models, bounded agents and ML pipelines. Try four projects in the browser.">
+<meta name="description" content="Portfolio of Vishnu Nambiar, an AI engineer building explainable models, bounded agents and ML pipelines. Try five projects in the browser.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,9 @@
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="mode" type="button" role="switch" aria-checked="false" id="mode-toggle" aria-label="Machine-readable view">
+      <span class="mode-h">Human</span><span class="mode-track" aria-hidden="true"><i></i></span><span class="mode-m">Machine</span>
+    </button>
   </div>
 </header>
 
@@ -50,6 +53,7 @@
         <p class="muted">Pick one. Each takes about a minute.</p>
         <ol class="start-list">
           <li><a href="#project-medical"><b>Type some symptoms</b><span>See which conditions rank first and exactly why.</span></a></li>
+          <li><a href="#project-tinylm"><b>Write with a tiny transformer</b><span>Generate text, then see where every character looked.</span></a></li>
           <li><a href="#project-forecast"><b>Plan a restaurant day</b><span>Set tomorrow's weather and promotions, get a footfall forecast.</span></a></li>
           <li><a href="#project-harness"><b>Replay an AI agent run</b><span>Watch four real runs, including one that stops itself.</span></a></li>
           <li><a href="#project-mlops"><b>Paste a Python model</b><span>Get the requirements file the MLOps agent would write.</span></a></li>
@@ -61,12 +65,13 @@
   <section id="projects" class="divided">
     <div class="wrap">
       <div class="section-head">
-        <h2>Four projects, all runnable</h2>
+        <h2>Five projects, all runnable</h2>
         <p>Each demo uses the project's own code or output. Every number here came from running it, and the notes say how.</p>
       </div>
 
       <div class="tablist" role="tablist" aria-label="Projects">
         <button class="tab" role="tab" id="tab-medical" aria-controls="panel-medical" aria-selected="true"><span class="t-title">Medical XAI</span><span class="t-sub">Type symptoms, see the maths</span></button>
+        <button class="tab" role="tab" id="tab-tinylm" aria-controls="panel-tinylm" aria-selected="false" tabindex="-1"><span class="t-title">Tiny LM</span><span class="t-sub">Write with a transformer, see inside it</span></button>
         <button class="tab" role="tab" id="tab-forecast" aria-controls="panel-forecast" aria-selected="false" tabindex="-1"><span class="t-title">Restaurant Forecasting</span><span class="t-sub">Set tomorrow's conditions</span></button>
         <button class="tab" role="tab" id="tab-harness" aria-controls="panel-harness" aria-selected="false" tabindex="-1"><span class="t-title">Engineering Harness</span><span class="t-sub">Replay four agent runs</span></button>
         <button class="tab" role="tab" id="tab-mlops" aria-controls="panel-mlops" aria-selected="false" tabindex="-1"><span class="t-title">MLOps Agent</span><span class="t-sub">Paste a model, get its packages</span></button>
@@ -102,6 +107,62 @@
             </ul>
           </div>
           <ul class="links"><li><a data-repo="medical-xai" href="#">Source code</a></li></ul>
+        </article>
+
+        <!-- Tiny LM -->
+        <article class="panel" id="panel-tinylm" role="tabpanel" aria-labelledby="tab-tinylm" hidden>
+          <header class="panel-head">
+            <h3>Tiny LM</h3>
+            <p class="meta"><span>Python, PyTorch</span><span>67 tests</span></p>
+            <p class="summary">A decoder-only transformer language model written from scratch: tokenizer, attention, feed-forward blocks, training loop and sampling, with an interactive teaching site. The demo is the trained model running in your browser.</p>
+          </header>
+          <ol class="try"><li>Pick a starter and press <em>Generate</em>.</li><li>Click a character under <em>What it expects next</em> to write the next letter yourself.</li><li>Open the heatmap and switch layers and heads.</li></ol>
+          <div class="demo">
+            <h4>Write with a model you can inspect</h4>
+            <div class="examples" id="t-starters" role="group" aria-label="Starting text"></div>
+            <label class="field" for="t-prompt">Starting text</label>
+            <input type="text" id="t-prompt" value="def " autocomplete="off" spellcheck="false">
+            <div class="tl-controls">
+              <div><label class="field" for="t-strategy">Choice of next character</label>
+                <select id="t-strategy"><option value="temperature" selected>Random, by temperature</option><option value="top_k">Random among the top 20</option><option value="greedy">Always the likeliest</option></select></div>
+              <div><label class="field" for="t-temp">Temperature <output id="t-temp-out"></output></label><input type="range" id="t-temp" min="0.3" max="1.5" step="0.05" value="0.8"></div>
+              <div><label class="field" for="t-len">Length <output id="t-len-out"></output></label><input type="range" id="t-len" min="20" max="240" step="10" value="160"></div>
+            </div>
+            <div class="ctrl">
+              <button class="btn small primary" type="button" id="t-generate">Generate</button>
+              <button class="btn small" type="button" id="t-stop" disabled>Stop</button>
+              <button class="btn small" type="button" id="t-reset">Reset</button>
+            </div>
+            <pre class="gen" id="t-out" tabindex="0" aria-live="polite" aria-label="Generated text"></pre>
+            <p class="muted" id="t-status" role="status"></p>
+            <div class="tl-grid">
+              <div>
+                <h5>What it expects next</h5>
+                <ul class="nexts" id="t-next"></ul>
+              </div>
+              <div>
+                <h5>Where each character looked</h5>
+                <div class="tl-sel">
+                  <select id="t-layer" aria-label="Layer"></select>
+                  <select id="t-head" aria-label="Head"></select>
+                </div>
+                <canvas id="t-heat" class="heat" role="img" aria-label="Attention heatmap: each row shows which earlier characters the character in that row looked at"></canvas>
+                <p class="readout" id="t-read" aria-live="polite"></p>
+              </div>
+            </div>
+            <p class="callout" id="t-stats"></p>
+            <p class="callout">It writes code-shaped text, not working code. It learned from a small corpus and partly memorised it: the training loss is well below the held-out loss. The point is that every number inside it is visible.</p>
+          </div>
+          <div class="notes">
+            <h4>What I tested and fixed</h4>
+            <ul>
+              <li>All 67 of the project's tests pass, and the teaching site's 26 tests pass.</li>
+              <li>The browser version matches PyTorch: logits differ by less than 0.0001 and six 60-character greedy continuations are identical.</li>
+              <li>Fixed: the teaching site did not build (an outdated TypeScript target, and an annotation script that only worked from one folder). It builds as a static site now.</li>
+              <li>Added: the training loop can run on a GPU. It was CPU-only.</li>
+            </ul>
+          </div>
+          <ul class="links"><li><a data-repo="tiny-lm" href="#">Source code</a></li></ul>
         </article>
 
         <!-- Forecasting -->
@@ -350,6 +411,20 @@
     </div>
   </section>
 </main>
+
+<section id="machine" class="machine" hidden aria-labelledby="machine-h">
+  <div class="wrap">
+    <div class="machine-bar">
+      <h2 id="machine-h">Machine-readable view</h2>
+      <div class="actions">
+        <button class="btn primary" type="button" id="machine-download">Download as .txt</button>
+        <button class="btn" type="button" id="machine-copy">Copy</button>
+      </div>
+    </div>
+    <p class="muted" id="machine-note" role="status">This is the whole site as plain text: the page content, the data behind each demo, the structured profile and the facts the chat answers from.</p>
+    <pre id="machine-text" tabindex="0" lang="en"></pre>
+  </div>
+</section>
 
 <footer class="site-footer">
   <div class="wrap"><span>Vishnu Nambiar, Bengaluru.</span><a href="#top">Back to top</a></div>
