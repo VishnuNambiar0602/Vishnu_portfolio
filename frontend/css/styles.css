@@ -112,6 +112,13 @@ section { padding-block: 88px; }
 .notes li { margin-bottom: 6px; }
 .links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; }
 
+.case { margin: 32px 0 24px; }
+.case h4 { font-size: 1.0625rem; margin: 0 0 8px; }
+.case dl { margin: 0; border-top: 1px solid var(--line); }
+.case dl div { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.case dt { color: var(--muted); font-weight: 500; }
+.case dd { margin: 0; max-width: 70ch; }
+
 /* forms */
 label.field, .field { display: flex; justify-content: space-between; gap: 12px; font-weight: 500; margin-bottom: 6px; }
 label.field output { font-family: var(--font-mono); font-weight: 400; color: var(--muted); }
@@ -313,7 +320,7 @@ pre { margin: 0; font-family: var(--font-mono); font-size: 0.8125rem; line-heigh
   :root { --gutter: 16px; }
   section { padding-block: 56px; }
   .facts-row, .stats, .skills-list, .contact .two { grid-template-columns: minmax(0, 1fr); }
-  .timeline > li, .log li, .mini div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .timeline > li, .log li, .mini div, .case dl div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .demo, .start { padding: 18px; }
   .chat-panel { right: 8px; bottom: 8px; width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
   .chat-open { right: 12px; bottom: 12px; }

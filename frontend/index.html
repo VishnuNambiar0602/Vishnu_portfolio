@@ -133,7 +133,7 @@
     <div class="wrap">
       <div class="section-head">
         <h2>Five projects, all runnable</h2>
-        <p>Each demo uses the project's own code or output. Every number here came from running it, and the notes say how.</p>
+        <p>Each demo uses the project's own code or output. Every number here came from running it, and each project's summary says how it was measured.</p>
       </div>
 
       <div class="tablist" role="tablist" aria-label="Projects">
@@ -164,12 +164,14 @@
             <h4>How well does it recover the right condition? (simulated cases)</h4>
             <div class="table-wrap"><table id="med-bench"></table></div>
           </div>
-          <div class="notes">
-            <h4>Checked while preparing this page</h4>
-            <ul>
-              <li>The right condition lands in the top 3 in 96 to 100% of simulated cases, and first in 75 to 99%, depending on how noisy the input is. The hardest case is synonyms plus an unrelated symptom.</li>
-              <li>Inference takes 7 to 26 ms per query in Python (95th percentile under 35 ms), inside the 100 ms target.</li>
-            </ul>
+          <div class="case">
+            <h4>At a glance</h4>
+            <dl>
+              <div><dt>The problem</dt><dd>Symptom checkers usually give an answer with no reasons, so neither a user nor a reviewer can judge or challenge it.</dd></div>
+              <div><dt>What I built</dt><dd>An engine that ranks 16 conditions from free-text symptoms and shows how each score was made (60% text similarity, 40% symptom overlap). It comes with a Flask API, a React interface, and clarifying questions when confidence is low.</dd></div>
+              <div><dt>Result</dt><dd>The right condition was in the top 3 for 96 to 100% of 15,360 simulated cases, and ranked first in 75 to 99% depending on how noisy the input was. Each query takes 7 to 26 ms. The cases are simulated from its own knowledge base, so this measures consistency, not clinical accuracy.</dd></div>
+              <div><dt>What it shows</dt><dd>Explainable AI, NLP with TF-IDF, API design, evaluating a model without labelled data, and running the same model in the browser.</dd></div>
+            </dl>
           </div>
           <ul class="links"><li><a data-repo="medical-xai" href="#">Source code</a></li></ul>
         </article>
@@ -217,14 +219,14 @@
             </div>
             <p class="callout" id="t-stats"></p>
           </div>
-          <div class="notes">
-            <h4>What I tested and fixed</h4>
-            <ul>
-              <li>All 67 of the project's tests pass, and the teaching site's 26 tests pass.</li>
-              <li>The browser version matches PyTorch: logits differ by less than 0.0001 and six 60-character greedy continuations are identical.</li>
-              <li>Fixed: the teaching site did not build (an outdated TypeScript target, and an annotation script that only worked from one folder). It builds as a static site now.</li>
-              <li>Added: the training loop can run on a GPU. It was CPU-only.</li>
-            </ul>
+          <div class="case">
+            <h4>At a glance</h4>
+            <dl>
+              <div><dt>The problem</dt><dd>Most people use language models as black boxes, which makes it hard to see why they behave as they do.</dd></div>
+              <div><dt>What I built</dt><dd>A complete transformer language model in PyTorch (tokenizer, attention, training loop, sampling), plus a teaching site with annotated code, diagrams and exercises.</dd></div>
+              <div><dt>Result</dt><dd>67 tests pass. A 0.82M-parameter model trained in 7 minutes on a laptop GPU reaches a perplexity of 10.7 on text it never saw, against 97 for random guessing. The browser version matches PyTorch's output to within 0.0001.</dd></div>
+              <div><dt>What it shows</dt><dd>Deep learning fundamentals, PyTorch, training and evaluating a model, shipping it to the browser, and explaining technical ideas clearly.</dd></div>
+            </dl>
           </div>
           <ul class="links"><li><a data-repo="tiny-lm" href="#">Source code</a></li></ul>
         </article>
@@ -278,13 +280,14 @@
             <p class="readout" id="f-readout" aria-live="polite">Hover or touch the chart to read values.</p>
             <div class="table-wrap"><table id="f-table"></table></div>
           </div>
-          <div class="notes">
-            <h4>What I tested and fixed</h4>
-            <ul>
-              <li>The original scripts could not run: they needed CSVs that were missing, and called <code>input()</code> and <code>plt.show()</code> mid-pipeline. They are now a CLI with a data-schema check and 6 passing tests.</li>
-              <li>Fixed: the footfall model used revenue as an input. Revenue is footfall times spend, so that leaked the answer. It is excluded.</li>
-              <li>Fixed: lagged time-series features were split with a random train/test split. The split is now by time, and each task has a naive baseline to beat.</li>
-            </ul>
+          <div class="case">
+            <h4>At a glance</h4>
+            <dl>
+              <div><dt>The problem</dt><dd>Restaurants often plan staff and stock by feel, which wastes food on slow days and understaffs busy ones.</dd></div>
+              <div><dt>What I built</dt><dd>Pipelines that forecast daily revenue with SARIMA and daily footfall with gradient boosting, run from a command line on any CSV with the right columns. The planner above turns a footfall forecast into revenue and servers needed.</dd></div>
+              <div><dt>Result</dt><dd>Revenue error fell from 17.3% to 11.7% MAPE against simply repeating last week, and footfall error from 14.8% to 9.0%. The original dataset was lost, so these figures come from synthetic data and show the method, not a real restaurant.</dd></div>
+              <div><dt>What it shows</dt><dd>Time-series forecasting, feature engineering, spotting and removing data leakage (revenue had been used to predict footfall), validating on future days instead of random ones, and packaging a model with tests.</dd></div>
+            </dl>
           </div>
           <ul class="links"><li><a data-repo="restaurant-forecasting" href="#">Source code</a></li></ul>
         </article>
@@ -311,14 +314,14 @@
             </div>
             <p class="callout" id="h-blurb"></p>
           </div>
-          <div class="notes">
-            <h4>What I tested and fixed</h4>
-            <ul>
-              <li>These replays are real traces from the orchestrator, driven by scripted model replies so no API key or network is needed. Ten pytest tests cover pass, patch, invalid diff, block and each budget halt.</li>
-              <li>Fixed: a rejected diff was counted but never retried, and exhausting the patch budget raised an exception instead of halting with saved evidence. Each run now also writes a <code>trace.jsonl</code> audit trail.</li>
-              <li>Fixed: <code>pip install -e .</code> failed on a packaging error. It installs now.</li>
-              <li>Not tested here: real model calls. Command safety is a deny-list, so it should run in a sandbox before use on important repositories.</li>
-            </ul>
+          <div class="case">
+            <h4>At a glance</h4>
+            <dl>
+              <div><dt>The problem</dt><dd>AI coding agents can loop forever, run up costs and apply broken changes.</dd></div>
+              <div><dt>What I built</dt><dd>A pipeline of five roles (architect, worker, validator, executor, reviewer) with hard limits: 2 patch attempts and 1 re-plan. Whether a change is valid is decided by deterministic checks, not by the model. Every run leaves a saved audit trail.</dd></div>
+              <div><dt>Result</dt><dd>Ten tests cover a clean pass, a patch, a rejected change, a block and each limit being hit. A run that cannot succeed stops with its evidence saved instead of retrying forever. It has not been run against live models; the replays above use scripted model replies.</dd></div>
+              <div><dt>What it shows</dt><dd>Agentic AI design, reliability and safety engineering, and how to test a system built on unpredictable components.</dd></div>
+            </dl>
           </div>
           <ul class="links"><li><a data-repo="autonomous-engineering-harness" href="#">Source code</a></li></ul>
         </article>
@@ -355,14 +358,14 @@
               </div>
             </div>
           </div>
-          <div class="notes">
-            <h4>What I tested and fixed</h4>
-            <ul>
-              <li>I ran the agent on its sample model with no LLM key. Import analysis uses Python's own parser, and the scaffold comes from templates, so it works offline.</li>
-              <li>Installed the generated project in a clean virtual environment: 7 of 7 generated tests pass.</li>
-              <li>Fixed: the generated <code>requirements.txt</code> listed <code>sklearn</code>, which pip refuses to install. Import names now map to PyPI names (<code>scikit-learn</code>, <code>opencv-python</code> and others), and standard-library detection uses Python's own module list. New unit tests cover both.</li>
-              <li>The agent generates scaffolds. It does not retrain or version models on its own, and I describe it that way.</li>
-            </ul>
+          <div class="case">
+            <h4>At a glance</h4>
+            <dl>
+              <div><dt>The problem</dt><dd>Every trained model needs the same production scaffolding before it can ship: a service, a container, CI and tests.</dd></div>
+              <div><dt>What I built</dt><dd>A tool that takes a Python model file and generates a deployable project: a FastAPI service, Dockerfile, GitHub and GitLab CI, MLflow hooks, tests and docs (20 files). It works offline, without an LLM key.</dd></div>
+              <div><dt>Result</dt><dd>The generated project installs in a clean environment and its 7 tests pass. Running it end to end found and fixed a bug that wrote a package name pip refuses to install. It generates projects; it does not retrain or version models by itself.</dd></div>
+              <div><dt>What it shows</dt><dd>MLOps, Docker and CI, automation, and testing a tool by running what it produces.</dd></div>
+            </dl>
           </div>
           <ul class="links"><li><a data-repo="mlops-agent" href="#">Source code</a></li></ul>
         </article>

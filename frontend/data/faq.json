@@ -361,7 +361,7 @@
       "accuracy",
       "claims"
     ],
-    "text": "Vishnu tests the claims he makes. Every number on this site came from running the project, and each project's notes say what was tested and fixed. Where data is synthetic or simulated, the page says so next to the number."
+    "text": "Vishnu tests the claims he makes. Every number on this site came from running the project, and each project's At a glance summary states how it was measured. Where data is synthetic or simulated, the page says so next to the number."
   },
   {
     "id": "site",
