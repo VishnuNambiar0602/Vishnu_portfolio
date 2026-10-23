@@ -913,15 +913,41 @@
   ],
   "activities": [
     {
-      "role": "Chief Editor",
-      "org": "INICIA, CHRIST University",
-      "dates": "Jun 2024 – Mar 2025",
-      "text": "Led editorial direction and content strategy for the university publication.",
+      "role": "Chair",
+      "org": "IEEE AESS, CHRIST University Student Branch",
+      "dates": "Feb 2026 – Present",
+      "text": "",
       "tags": [
+        "ieee",
+        "community",
         "leadership",
-        "communication",
-        "writing",
-        "content"
+        "chair"
+      ]
+    },
+    {
+      "role": "Events Head",
+      "org": "CHRIST Incubation Center, Kengeri",
+      "dates": "Jun 2025 – Present",
+      "text": "",
+      "tags": [
+        "incubation",
+        "startup",
+        "events",
+        "leadership"
+      ]
+    },
+    {
+      "role": "Student Coordinator",
+      "org": "NASA Space Apps Challenge 2025",
+      "dates": "Aug 2025",
+      "text": "",
+      "tags": [
+        "hackathon",
+        "nasa",
+        "space",
+        "innovation",
+        "coordination",
+        "leadership"
       ]
     },
     {
@@ -938,35 +964,15 @@
       ]
     },
     {
-      "role": "",
-      "org": "NASA Space Apps Challenge 2025",
-      "dates": "Aug 2025",
-      "text": "",
+      "role": "Chief Editor",
+      "org": "INICIA, CHRIST University",
+      "dates": "Jun 2024 – Mar 2025",
+      "text": "Led editorial direction and content strategy for the university publication.",
       "tags": [
-        "hackathon",
-        "nasa",
-        "space",
-        "innovation"
-      ]
-    },
-    {
-      "role": "",
-      "org": "IEEE AESS, CHRIST University Student Branch",
-      "dates": "Feb 2026 – Present",
-      "text": "",
-      "tags": [
-        "ieee",
-        "community"
-      ]
-    },
-    {
-      "role": "",
-      "org": "CHRIST Incubation Center, Kengeri",
-      "dates": "Jun 2025 – Present",
-      "text": "",
-      "tags": [
-        "incubation",
-        "startup"
+        "leadership",
+        "communication",
+        "writing",
+        "content"
       ]
     }
   ],
