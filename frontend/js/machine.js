@@ -129,6 +129,27 @@ async function dataText() {
   return out.join("\n");
 }
 
+
+// A plain, factual summary for people and parsers skimming the text. Every line is a fact from the profile
+// with its evidence nearby. It states no opinion about suitability: that is the reader's call.
+function screeningSummary(profile) {
+  const skills = profile.skills.map((g) => `${g.label}: ${g.items.map((i) => i.name).join(", ")}`);
+  const evidence = profile.projects.flatMap((p) => p.bullets.slice(0, 1).map((b) => `- ${p.name}${p.dates ? ` (${p.dates})` : ""}: ${b.text} Source: ${p.url}`));
+  const roles = profile.experience.map((e) => `- ${e.role}, ${e.org}, ${e.dates}`);
+  const lead = profile.activities.slice(0, 3).map((a) => `- ${a.role}, ${a.org.replace(", Kengeri", "")}, ${a.dates}`);
+  return [
+    "## Screening summary (facts only; each is detailed and sourced below)", "",
+    `candidate: ${profile.name}, ${profile.location}`,
+    "looking for: AI/ML internships and freelance projects",
+    `education: ${profile.education[0].degree}, ${profile.education[0].school}, ${profile.education[0].dates}, ${profile.education[0].detail}`,
+    "", "work experience:", ...roles,
+    "", "leadership and activities:", ...lead,
+    "", "skills:", ...skills.map((s) => `- ${s}`),
+    "", "project evidence (first result per project; every figure was measured and the method is stated on the page):", ...evidence,
+    "", `contact: ${profile.email}`, "",
+  ].join("\n");
+}
+
 let cached;
 export async function buildSiteText() {
   if (cached) return cached;
@@ -137,10 +158,11 @@ export async function buildSiteText() {
     `format: UTF-8 plain text, Markdown-style headings`,
     `source: ${location.origin}${location.pathname}`,
     `generated: ${new Date().toISOString().slice(0, 10)}`,
-    "contents: page text, then data tables behind each demo, then the structured profile, then the chat knowledge base",
+    "contents: screening summary, page text, data tables behind each demo, structured profile, chat knowledge base",
     "",
   ].join("\n");
-  cached = `${head}\n${pageText()}\n${await dataText()}\n`;
+  const profile = await loadJSON("data/profile.json");
+  cached = `${head}\n${screeningSummary(profile)}\n${pageText()}\n${await dataText()}\n`;
   return cached;
 }
 
