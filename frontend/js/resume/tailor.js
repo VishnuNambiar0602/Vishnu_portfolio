@@ -86,7 +86,7 @@ function bullets(items, jd, base, protectFirst) {
   return items.map((b, i) => ({
     text: b.text,
     score: scoreText(b.text, b.tags, jd),
-    priority: base + scoreText(b.text, b.tags, jd) - i * 0.5 + (protectFirst && i === 0 ? 1000 : 0),
+    priority: (b.keep ? 1000 : base) + scoreText(b.text, b.tags, jd) - i * 0.5 + (protectFirst && i === 0 ? 1000 : 0),
   }));
 }
 
@@ -106,7 +106,7 @@ export function buildModel(profile, jdText) {
     b.priority = base + b.score;
   }));
 
-  const experience = profile.experience.map((e) => ({ ...e, bullets: bullets(e.bullets, jd, 40, true) }));
+  const experience = profile.experience.map((e) => ({ ...e, bullets: bullets(e.bullets, jd, 36, true) }));
 
   const model = {
     name: profile.name,
@@ -120,15 +120,11 @@ export function buildModel(profile, jdText) {
     sections: [
       { title: "Summary", type: "paragraph", text: summary(profile, jd) },
       { title: "Education", type: "entries", entries: profile.education.map((e) => ({ left: e.school, right: e.dates, sub: `${e.degree} | ${e.detail}`, bullets: [] })) },
-      { title: "Technical Skills", type: "skills", rows: orderSkills(profile, jd) },
+      { title: "Technical Skills", type: "skills", rows: [...orderSkills(profile, jd), { label: "Spoken", text: profile.spoken, w: -1 }] },
       { title: "Projects", type: "entries", entries: projects.map((p) => ({ left: p.name, right: p.dates, sub: p.stack, link: p.link, url: p.url, bullets: p.bullets })) },
       { title: "Experience", type: "entries", entries: experience.map((e) => ({ left: e.org, right: e.dates, sub: e.role, bullets: e.bullets })) },
-      { title: "Certifications and Activities", type: "lines", rows: [
-        ...profile.certifications.map((c) => ({ left: `${c.name}, ${c.issuer}`, right: c.date })),
-        ...profile.activities.filter((a) => a.role).map((a) => ({ left: [a.role, a.org].filter(Boolean).join(", "), right: a.dates })),
-        { left: profile.activities.filter((a) => !a.role).map((a) => a.org.replace(", CHRIST University Student Branch", " student branch").replace(", Kengeri", "")).join("; "), right: "" },
-        { left: `Spoken languages: ${profile.spoken}`, right: "" },
-      ] },
+      { title: "Certifications", type: "lines", rows: profile.certifications.map((c) => ({ left: `${c.name}, ${c.issuer}`, right: c.date })) },
+      { title: "Activities", type: "lines", rows: profile.activities.map((a) => ({ left: [a.role, a.org.replace(", Kengeri", "")].filter(Boolean).join(", "), right: a.dates })) },
     ],
   };
 

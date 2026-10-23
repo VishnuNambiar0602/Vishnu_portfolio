@@ -18,9 +18,9 @@ python -m http.server 8765      # then open http://localhost:8765
 
 ## Publish
 
-1. Create a GitHub repository named `vishnu-portfolio` (or change `REPO` in `frontend/js/config.js`) and push this folder to it.
+1. Create a GitHub repository (for example `vishnu-portfolio`) and push this folder to it. The "Source code" links on the site and the project links on the resume point at your existing project repositories; they are set in `frontend/js/config.js` and `frontend/data/profile.json`.
 2. Settings, Pages, Source: **GitHub Actions**.
-3. Every push to `main` runs all tests and, if they pass, deploys `frontend/` to Pages. The "Source code" links on the site point at `backend/<project>` in this repository.
+3. Every push to `main` runs all tests and, if they pass, deploys `frontend/` to Pages. 
 
 ## Tests
 

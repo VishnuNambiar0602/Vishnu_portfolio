@@ -3,7 +3,7 @@
 import { trimOne } from "./tailor.js";
 
 const PAGE = { w: 595.28, h: 841.89 }; // A4, points
-const S = { left: 38, right: 38, top: 34, bottom: 30, body: 10, small: 9.5, name: 21, head: 10.5, lead: 1.27 };
+const S = { left: 38, right: 38, top: 34, bottom: 30, body: 10, small: 9.5, name: 21, head: 10.5, lead: 1.23 };
 const INK = [20, 20, 20], MUTED = [70, 70, 70], LINK = [11, 79, 138];
 
 function render(doc, m) {
@@ -23,11 +23,11 @@ function render(doc, m) {
   font("normal", S.body + 0.5, MUTED);
   doc.text(m.headline, S.left, y);
   y += 14;
-  font("normal", S.small);
+  font("normal", 9);
   let x = S.left;
   m.contact.forEach((c, i) => {
-    if (i) { font("normal", S.small, MUTED); doc.text("  |  ", x, y); x += doc.getTextWidth("  |  "); }
-    font("normal", S.small, c.href ? LINK : INK);
+    if (i) { font("normal", 9, MUTED); doc.text("  |  ", x, y); x += doc.getTextWidth("  |  "); }
+    font("normal", 9, c.href ? LINK : INK);
     if (c.href) doc.textWithLink(c.text, x, y, { url: c.href }); else doc.text(c.text, x, y);
     x += doc.getTextWidth(c.text);
   });

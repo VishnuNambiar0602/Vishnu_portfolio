@@ -1,4 +1,4 @@
-import { BACKEND_URL } from "./config.js";
+import { REPOS } from "./config.js";
 
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 const mounted = new Set();
@@ -58,8 +58,8 @@ window.addEventListener("hashchange", openFromHash);
 document.querySelectorAll(".start-list a").forEach((a) => a.addEventListener("click", () => setTimeout(openFromHash, 0)));
 if (!openFromHash()) select(tabs[0]);
 
-// Source links point at backend/ in the repository (see js/config.js).
-document.querySelectorAll("a[data-repo]").forEach((a) => { a.href = `${BACKEND_URL}/${a.dataset.repo}`; });
+// Source links point at each project repository (see js/config.js) (see js/config.js).
+document.querySelectorAll("a[data-repo]").forEach((a) => { a.href = REPOS[a.dataset.repo]; });
 
 // Highlight the nav item for the section in view.
 const links = [...document.querySelectorAll(".site-nav a")];

@@ -145,7 +145,8 @@
             "cross-functional",
             "collaboration",
             "delivery"
-          ]
+          ],
+          "keep": true
         },
         {
           "text": "Mentored intern teams on AI implementation projects to keep quality consistent and deadlines met.",
@@ -190,7 +191,7 @@
       "name": "Medical Diagnosis System with Explainable AI",
       "stack": "Python, scikit-learn, Flask, React",
       "dates": "Jan 2026",
-      "link": "vishnu-portfolio/backend/medical-xai",
+      "link": "github.com/VishnuNambiar0602/Medical-Reporter",
       "tags": [
         "nlp",
         "explainable",
@@ -233,13 +234,13 @@
           ]
         }
       ],
-      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/medical-xai"
+      "url": "https://github.com/VishnuNambiar0602/Medical-Reporter"
     },
     {
       "name": "Autonomous Engineering Harness",
       "stack": "Python, OpenRouter, Pydantic, pytest",
       "dates": "Sep 2026",
-      "link": "vishnu-portfolio/backend/autonomous-engineering-harness",
+      "link": "github.com/VishnuNambiar0602/hercules",
       "tags": [
         "agentic",
         "llm",
@@ -277,13 +278,13 @@
           ]
         }
       ],
-      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/autonomous-engineering-harness"
+      "url": "https://github.com/VishnuNambiar0602/hercules"
     },
     {
       "name": "MLOps Pipelines AI Agent",
       "stack": "TypeScript, Python, Docker, GitHub Actions",
       "dates": "Dec 2025",
-      "link": "vishnu-portfolio/backend/mlops-agent",
+      "link": "github.com/VishnuNambiar0602/Agentic-MLOPs",
       "tags": [
         "mlops",
         "docker",
@@ -330,13 +331,13 @@
           ]
         }
       ],
-      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/mlops-agent"
+      "url": "https://github.com/VishnuNambiar0602/Agentic-MLOPs"
     },
     {
       "name": "Sales Forecasting System",
       "stack": "Python, statsmodels, scikit-learn, pandas",
       "dates": "Aug 2025",
-      "link": "vishnu-portfolio/backend/restaurant-forecasting",
+      "link": "github.com/VishnuNambiar0602/Restuarant-Managment-System-Using-ML",
       "tags": [
         "forecasting",
         "time series",
@@ -383,7 +384,7 @@
           ]
         }
       ],
-      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/restaurant-forecasting"
+      "url": "https://github.com/VishnuNambiar0602/Restuarant-Managment-System-Using-ML"
     }
   ],
   "skills": [
