@@ -1,0 +1,8 @@
+Machine Learning Engineer (MLOps)
+We deploy models to production for retail clients. You will own CI/CD for ML, model serving, monitoring and experiment tracking.
+Requirements:
+- Python, Docker, Kubernetes, GitHub Actions or GitLab CI
+- MLflow or similar experiment tracking
+- Model deployment, REST APIs, FastAPI or Flask
+- Experience with AWS SageMaker, Airflow a plus
+- Unit testing and reproducible pipelines

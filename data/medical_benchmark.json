@@ -1,0 +1,66 @@
+{
+  "seed": 7,
+  "per_condition": 160,
+  "rows": [
+    {
+      "symptoms": 2,
+      "distractors": 0,
+      "synonyms": false,
+      "cases": 2560,
+      "top1_pct": 91.6,
+      "top3_pct": 99.5,
+      "latency_p50_ms": 24.3,
+      "latency_p95_ms": 33.3
+    },
+    {
+      "symptoms": 3,
+      "distractors": 0,
+      "synonyms": false,
+      "cases": 2560,
+      "top1_pct": 97.8,
+      "top3_pct": 100.0,
+      "latency_p50_ms": 25.6,
+      "latency_p95_ms": 34.3
+    },
+    {
+      "symptoms": 4,
+      "distractors": 0,
+      "synonyms": false,
+      "cases": 2560,
+      "top1_pct": 99.5,
+      "top3_pct": 100.0,
+      "latency_p50_ms": 26.5,
+      "latency_p95_ms": 34.3
+    },
+    {
+      "symptoms": 3,
+      "distractors": 1,
+      "synonyms": false,
+      "cases": 2560,
+      "top1_pct": 95.0,
+      "top3_pct": 99.7,
+      "latency_p50_ms": 7.6,
+      "latency_p95_ms": 28.8
+    },
+    {
+      "symptoms": 3,
+      "distractors": 0,
+      "synonyms": true,
+      "cases": 2560,
+      "top1_pct": 89.9,
+      "top3_pct": 99.2,
+      "latency_p50_ms": 7.2,
+      "latency_p95_ms": 9.6
+    },
+    {
+      "symptoms": 3,
+      "distractors": 1,
+      "synonyms": true,
+      "cases": 2560,
+      "top1_pct": 75.1,
+      "top3_pct": 96.2,
+      "latency_p50_ms": 6.8,
+      "latency_p95_ms": 8.6
+    }
+  ]
+}

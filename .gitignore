@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+builds/
+dist/
+runs/
+.env
+*.pem
+js/private/
+PRIVATE.md

@@ -1,0 +1,266 @@
+{
+ "limits": {
+  "max_architecture_replans": 1,
+  "max_worker_patches": 2,
+  "max_environment_retries": 2,
+  "max_commands_per_task": 12,
+  "max_command_seconds": 120,
+  "max_output_chars": 30000,
+  "max_files_in_context": 40,
+  "max_file_chars": 24000
+ },
+ "scenarios": [
+  {
+   "id": "pass",
+   "title": "Clean pass",
+   "blurb": "The worker's diff applies, the check command succeeds, the reviewer passes it.",
+   "final": "PASS",
+   "reason": null,
+   "trace": [
+    {
+     "node": "architect",
+     "tasks": [
+      "t1"
+     ],
+     "summary": "greet"
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 0
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "PASS",
+     "issues": [],
+     "patches_used": 0,
+     "replans_used": 0
+    },
+    {
+     "node": "done",
+     "status": "PASS"
+    }
+   ]
+  },
+  {
+   "id": "patch",
+   "title": "One bounded patch",
+   "blurb": "The reviewer asks for a fix. Only the affected task goes back to the worker.",
+   "final": "PASS",
+   "reason": null,
+   "trace": [
+    {
+     "node": "architect",
+     "tasks": [
+      "t1"
+     ],
+     "summary": "greet"
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 0
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "PATCH",
+     "issues": [
+      "needs test"
+     ],
+     "patches_used": 0,
+     "replans_used": 0
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 1
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "PASS",
+     "issues": [],
+     "patches_used": 1,
+     "replans_used": 0
+    },
+    {
+     "node": "done",
+     "status": "PASS"
+    }
+   ]
+  },
+  {
+   "id": "invalid",
+   "title": "Bad diff, retried",
+   "blurb": "The first diff fails `git apply --check`. The validator, not the model, rejects it.",
+   "final": "PASS",
+   "reason": null,
+   "trace": [
+    {
+     "node": "architect",
+     "tasks": [
+      "t1"
+     ],
+     "summary": "greet"
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 0
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": false,
+     "errors": [
+      "Diff does not contain a standard 'diff --git' header",
+      "git apply --check failed: error: No valid patches in input (allow with \"--allow-empty\")"
+     ]
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 1
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "PASS",
+     "issues": [],
+     "patches_used": 1,
+     "replans_used": 0
+    },
+    {
+     "node": "done",
+     "status": "PASS"
+    }
+   ]
+  },
+  {
+   "id": "block",
+   "title": "Block, one re-plan, halt",
+   "blurb": "The reviewer blocks twice. After one re-plan the harness stops instead of looping.",
+   "final": "HALT",
+   "reason": "architecture re-plan budget exhausted",
+   "trace": [
+    {
+     "node": "architect",
+     "tasks": [
+      "t1"
+     ],
+     "summary": "greet"
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 0
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "BLOCK",
+     "issues": [
+      "wrong approach"
+     ],
+     "patches_used": 0,
+     "replans_used": 0
+    },
+    {
+     "node": "architect",
+     "tasks": [
+      "t1"
+     ],
+     "summary": "greet"
+    },
+    {
+     "node": "worker",
+     "task": "t1",
+     "patches_used": 0
+    },
+    {
+     "node": "validator",
+     "task": "t1",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "node": "executor",
+     "commands": [
+      "python hello.py"
+     ]
+    },
+    {
+     "node": "reviewer",
+     "status": "BLOCK",
+     "issues": [
+      "wrong approach"
+     ],
+     "patches_used": 0,
+     "replans_used": 1
+    },
+    {
+     "node": "done",
+     "status": "HALT",
+     "reason": "architecture re-plan budget exhausted"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vishnu Nambiar · AI Engineer</title>
+<meta name="description" content="Portfolio of Vishnu Nambiar, an AI engineer building explainable models, bounded agents and ML pipelines. Try four projects in the browser.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#projects">Skip to projects</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Vishnu Nambiar</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Vishnu Nambiar</h1>
+        <p class="lead">AI engineer. I build explainable models, bounded agents and ML pipelines, and I test the claims before I make them.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Try a live demo</a>
+          <button class="btn" type="button" id="resume-btn">Download resume (PDF)</button>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+        <dl class="facts-row">
+          <div><dt>Focus</dt><dd>Agentic AI, MLOps, explainable AI</dd></div>
+          <div><dt>Studying</dt><dd>BTech AI and ML, CHRIST University, 2027</dd></div>
+          <div><dt>Now</dt><dd>Freelance AI/ML and web developer</dd></div>
+          <div><dt>Open to</dt><dd>AI/ML internships and freelance projects</dd></div>
+        </dl>
+      </div>
+
+      <aside class="start" aria-labelledby="start-h">
+        <h2 id="start-h">Not sure where to start?</h2>
+        <p class="muted">Pick one. Each takes about a minute.</p>
+        <ol class="start-list">
+          <li><a href="#project-medical"><b>Type some symptoms</b><span>See which conditions rank first and exactly why.</span></a></li>
+          <li><a href="#project-forecast"><b>Plan a restaurant day</b><span>Set tomorrow's weather and promotions, get a footfall forecast.</span></a></li>
+          <li><a href="#project-harness"><b>Replay an AI agent run</b><span>Watch four real runs, including one that stops itself.</span></a></li>
+          <li><a href="#project-mlops"><b>Paste a Python model</b><span>Get the requirements file the MLOps agent would write.</span></a></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section id="projects" class="divided">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Four projects, all runnable</h2>
+        <p>Each demo uses the project's own code or output. Every number here came from running it, and the notes say how.</p>
+      </div>
+
+      <div class="tablist" role="tablist" aria-label="Projects">
+        <button class="tab" role="tab" id="tab-medical" aria-controls="panel-medical" aria-selected="true"><span class="t-title">Medical XAI</span><span class="t-sub">Type symptoms, see the maths</span></button>
+        <button class="tab" role="tab" id="tab-forecast" aria-controls="panel-forecast" aria-selected="false" tabindex="-1"><span class="t-title">Restaurant Forecasting</span><span class="t-sub">Set tomorrow's conditions</span></button>
+        <button class="tab" role="tab" id="tab-harness" aria-controls="panel-harness" aria-selected="false" tabindex="-1"><span class="t-title">Engineering Harness</span><span class="t-sub">Replay four agent runs</span></button>
+        <button class="tab" role="tab" id="tab-mlops" aria-controls="panel-mlops" aria-selected="false" tabindex="-1"><span class="t-title">MLOps Agent</span><span class="t-sub">Paste a model, get its packages</span></button>
+      </div>
+
+      <div class="panels">
+        <!-- Medical XAI -->
+        <article class="panel" id="panel-medical" role="tabpanel" aria-labelledby="tab-medical">
+          <header class="panel-head">
+            <h3>Medical XAI</h3>
+            <p class="meta"><span>January 2026</span><span>Python, scikit-learn, Flask, React</span></p>
+            <p class="summary">Ranks 16 conditions from free-text symptoms. Each score is split into text similarity (60%) and symptom overlap (40%), so a reader can see why one condition outranks another.</p>
+          </header>
+          <ol class="try"><li>Pick an example or tap symptoms.</li><li>Open <em>How this score was built</em> under a result.</li><li>Try the vague example to see the low-confidence message.</li></ol>
+          <div class="demo">
+            <div class="examples" id="med-examples" role="group" aria-label="Examples"></div>
+            <label class="field" for="med-input">Symptoms, separated by commas</label>
+            <input type="text" id="med-input" value="fever, cough, sore throat, fatigue" autocomplete="off" spellcheck="false">
+            <ul class="chips" id="med-chips" aria-label="Common symptoms"></ul>
+            <ol class="results" id="med-results" aria-live="polite"></ol>
+            <p class="callout">Research demo, not medical advice. The scoring code in this page is a port of the project's Python model, and it returned identical rankings and scores on all 65 reference cases I compared.</p>
+          </div>
+          <div class="demo">
+            <h4>How well does it recover the right condition?</h4>
+            <div class="table-wrap"><table id="med-bench"></table></div>
+            <p class="callout">There is no labelled clinical dataset in the repository, so these cases are simulated from the knowledge base itself: pick symptoms from a condition, optionally swap in synonyms or add unrelated symptoms, then check the ranking. This measures consistency, not diagnostic accuracy. Reproduce with <code>python benchmark.py</code>.</p>
+          </div>
+          <div class="notes">
+            <h4>Checked while preparing this page</h4>
+            <ul>
+              <li>The right condition lands in the top 3 in 96 to 100% of simulated cases, and first in 75 to 99%, depending on how noisy the input is. The hardest case is synonyms plus an unrelated symptom.</li>
+              <li>Inference takes 7 to 26 ms per query in Python (95th percentile under 35 ms), inside the 100 ms target.</li>
+            </ul>
+          </div>
+          <ul class="links"><li><a data-repo="medical-xai" href="#">Source code</a></li></ul>
+        </article>
+
+        <!-- Forecasting -->
+        <article class="panel" id="panel-forecast" role="tabpanel" aria-labelledby="tab-forecast" hidden>
+          <header class="panel-head">
+            <h3>Restaurant Demand Forecasting</h3>
+            <p class="meta"><span>August 2025</span><span>Python, statsmodels, scikit-learn</span></p>
+            <p class="summary">Predicts daily footfall with gradient boosting and daily revenue with SARIMA, so inventory and staffing can be planned from data.</p>
+          </header>
+          <ol class="try"><li>Set tomorrow's conditions on the left.</li><li>Read the forecast and what pushed it up or down.</li><li>Switch the promotion or weather and compare.</li></ol>
+          <div class="demo">
+            <h4>Forecast tomorrow</h4>
+            <form class="fc" id="fc-form" onsubmit="return false">
+              <div class="fc-inputs">
+                <div class="row2">
+                  <label class="field" for="fc-day">Day</label>
+                  <select id="fc-day"></select>
+                </div>
+                <fieldset class="seg" id="fc-weather"><legend>Weather</legend></fieldset>
+                <label class="check"><input type="checkbox" id="fc-promo"> Promotion running</label>
+                <label class="field" for="fc-marketing">Marketing spend <output id="fc-marketing-out"></output></label>
+                <input type="range" id="fc-marketing">
+                <label class="field" for="fc-price">Average menu price <output id="fc-price-out"></output></label>
+                <input type="range" id="fc-price" step="0.1">
+                <label class="field" for="fc-reviews">Review rating <output id="fc-reviews-out"></output></label>
+                <input type="range" id="fc-reviews" step="0.1">
+                <div class="row2">
+                  <label class="field" for="fc-lag1">Customers yesterday</label>
+                  <input type="number" id="fc-lag1" min="0" step="1">
+                </div>
+                <div class="row2">
+                  <label class="field" for="fc-lag7">Same day last week</label>
+                  <input type="number" id="fc-lag7" min="0" step="1">
+                </div>
+              </div>
+              <div class="fc-out" aria-live="polite">
+                <p class="big" id="fc-big"></p>
+                <p class="muted" id="fc-range"></p>
+                <dl class="mini" id="fc-plan"></dl>
+                <h4>What moved the forecast</h4>
+                <div class="table-wrap"><table id="fc-effects"></table></div>
+              </div>
+            </form>
+            <p class="callout">The model here is the project's gradient-boosting regressor, exported from Python and run in your browser (it matched scikit-learn on all 60 reference cases). It was trained on synthetic data, so treat the numbers as a demonstration of the method.</p>
+          </div>
+          <div class="demo">
+            <h4>How well does the revenue model track? Last 120 days, final 60 held out</h4>
+            <div class="legend"><span><i></i>Actual revenue</span><span><i class="p"></i>SARIMA forecast</span></div>
+            <div class="chart-scroll"><svg class="chart" id="f-chart" viewBox="0 0 720 280" role="img" aria-label="Line chart of daily revenue for 120 days. The SARIMA forecast over the last 60 days follows the weekly pattern of the actual values."></svg></div>
+            <p class="readout" id="f-readout" aria-live="polite">Hover or touch the chart to read values.</p>
+            <div class="table-wrap"><table id="f-table"></table></div>
+          </div>
+          <div class="notes">
+            <h4>What I tested and fixed</h4>
+            <ul>
+              <li>The original scripts could not run: they needed CSVs that were missing, and called <code>input()</code> and <code>plt.show()</code> mid-pipeline. They are now a CLI with a data-schema check and 6 passing tests.</li>
+              <li>Fixed: the footfall model used revenue as an input. Revenue is footfall times spend, so that leaked the answer. It is excluded.</li>
+              <li>Fixed: lagged time-series features were split with a random train/test split. The split is now by time, and each task has a naive baseline to beat.</li>
+            </ul>
+          </div>
+          <ul class="links"><li><a data-repo="restaurant-forecasting" href="#">Source code</a></li></ul>
+        </article>
+
+        <!-- Harness -->
+        <article class="panel" id="panel-harness" role="tabpanel" aria-labelledby="tab-harness" hidden>
+          <header class="panel-head">
+            <h3>Autonomous Engineering Harness</h3>
+            <p class="meta"><span>September 2026</span><span>Python, OpenRouter, Pydantic, Typer</span></p>
+            <p class="summary">A coding pipeline built to avoid runaway agent loops. Four model roles plan, write, run and review changes. A deterministic validator, not a model, decides whether a diff is valid, and fixed budgets decide when to stop.</p>
+          </header>
+          <ol class="try"><li>Pick a scenario.</li><li>Press <em>Step</em> and watch which role acts and how the budgets change.</li><li>Compare "Clean pass" with "Block, one re-plan, halt".</li></ol>
+          <div class="demo">
+            <h4>Replay a run</h4>
+            <div class="scenarios" id="h-scenarios" role="group" aria-label="Scenario"></div>
+            <ol class="pipeline" id="h-pipeline"></ol>
+            <p class="loops">Reviewer PATCH sends one task back to the worker (limit 2). BLOCK sends the plan back to the architect (limit 1). Anything beyond a limit halts the run.</p>
+            <div class="budgets" id="h-budgets"></div>
+            <ol class="log" id="h-log" aria-live="polite"></ol>
+            <div class="ctrl">
+              <button class="btn small" id="h-step">Step</button>
+              <button class="btn small" id="h-play">Play</button>
+              <button class="btn small" id="h-reset">Reset</button>
+            </div>
+            <p class="callout" id="h-blurb"></p>
+          </div>
+          <div class="notes">
+            <h4>What I tested and fixed</h4>
+            <ul>
+              <li>These replays are real traces from the orchestrator, driven by scripted model replies so no API key or network is needed. Ten pytest tests cover pass, patch, invalid diff, block and each budget halt.</li>
+              <li>Fixed: a rejected diff was counted but never retried, and exhausting the patch budget raised an exception instead of halting with saved evidence. Each run now also writes a <code>trace.jsonl</code> audit trail.</li>
+              <li>Fixed: <code>pip install -e .</code> failed on a packaging error. It installs now.</li>
+              <li>Not tested here: real model calls. Command safety is a deny-list, so it should run in a sandbox before use on important repositories.</li>
+            </ul>
+          </div>
+          <ul class="links"><li><a data-repo="autonomous-engineering-harness" href="#">Source code</a></li></ul>
+        </article>
+
+        <!-- MLOps -->
+        <article class="panel" id="panel-mlops" role="tabpanel" aria-labelledby="tab-mlops" hidden>
+          <header class="panel-head">
+            <h3>MLOps Agent</h3>
+            <p class="meta"><span>December 2025</span><span>TypeScript, Python, Docker, GitHub Actions</span></p>
+            <p class="summary">Takes a Python model file and generates a deployable project around it: a FastAPI service, Dockerfile, CI for GitHub and GitLab, MLflow tracking, tests and docs.</p>
+          </header>
+          <ol class="try"><li>Edit the Python below. Try adding <code>import cv2</code>.</li><li>Watch the packages and <code>requirements.txt</code> update.</li><li>Open any file of the generated project underneath.</li></ol>
+          <div class="demo">
+            <h4>Step 1 of the agent: work out what the model needs</h4>
+            <div class="deps">
+              <div>
+                <label class="field" for="m-src">Your model file</label>
+                <textarea id="m-src" rows="14" spellcheck="false"></textarea>
+              </div>
+              <div class="deps-out" aria-live="polite">
+                <h5>Packages to install</h5><div id="m-ext" class="tags"></div>
+                <h5>Standard library (nothing to install)</h5><div id="m-std" class="tags"></div>
+                <h5>requirements.txt</h5><pre tabindex="0"><code id="m-req"></code></pre>
+              </div>
+            </div>
+            <p class="callout">This is a browser port of the agent's dependency step, checked against Python's own parser on 6 reference files. The full agent also writes the API, Docker, CI and test files below; run it from the command line with <code>node dist/cli.js model.py</code>.</p>
+          </div>
+          <div class="demo">
+            <h4>The project it generated from <code>sample_model.py</code></h4>
+            <div class="files">
+              <ul class="tree" id="m-tree" aria-label="Generated files"></ul>
+              <div>
+                <div class="filename" id="m-name"></div>
+                <pre tabindex="0"><code id="m-code"></code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="notes">
+            <h4>What I tested and fixed</h4>
+            <ul>
+              <li>I ran the agent on its sample model with no LLM key. Import analysis uses Python's own parser, and the scaffold comes from templates, so it works offline.</li>
+              <li>Installed the generated project in a clean virtual environment: 7 of 7 generated tests pass.</li>
+              <li>Fixed: the generated <code>requirements.txt</code> listed <code>sklearn</code>, which pip refuses to install. Import names now map to PyPI names (<code>scikit-learn</code>, <code>opencv-python</code> and others), and standard-library detection uses Python's own module list. New unit tests cover both.</li>
+              <li>The agent generates scaffolds. It does not retrain or version models on its own, and I describe it that way.</li>
+            </ul>
+          </div>
+          <ul class="links"><li><a data-repo="mlops-agent" href="#">Source code</a></li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="divided">
+    <div class="wrap">
+      <div class="section-head"><h2>About</h2></div>
+
+      <div class="facet">
+        <div class="facet-label"><h3>In short</h3></div>
+        <div class="facet-body">
+          <p class="big-p">I like problems where the first answer is wrong: a symptom checker that cannot explain itself, an agent that loops forever, a forecast that quietly learned from its own answer. Each one needs someone to ask what is actually being measured.</p>
+          <p>So I build the system, then try to break it, and I write down what I found.</p>
+          <ul class="stats">
+            <li><b>14+</b><span>live projects led, 3 of them international</span></li>
+            <li><b>150+</b><span>interns managed</span></li>
+            <li><b>30%</b><span>delivery efficiency gain from a redesigned process</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="facet">
+        <div class="facet-label"><h3>Skills</h3></div>
+        <div class="facet-body skills-list">
+          <div><h4>Programming</h4><ul class="tags"><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></div>
+          <div><h4>ML and AI</h4><ul class="tags"><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>OpenCV</li><li>NLP</li><li>LangChain</li><li>Generative AI</li><li>Agentic AI</li><li>Explainable AI</li><li>Time-series forecasting</li></ul></div>
+          <div><h4>Data</h4><ul class="tags"><li>Pandas</li><li>NumPy</li><li>MongoDB</li><li>Neo4j</li><li>Redis</li><li>Data analytics</li><li>Advanced Excel</li></ul></div>
+          <div><h4>MLOps and engineering</h4><ul class="tags"><li>MLOps</li><li>Docker</li><li>GitHub Actions</li><li>MLflow</li><li>FastAPI</li><li>Flask</li><li>REST APIs</li><li>Git</li><li>pytest</li></ul></div>
+          <div><h4>Web and mobile</h4><ul class="tags"><li>React</li><li>Node.js</li><li>Flutter</li></ul></div>
+          <div><h4>Spoken</h4><ul class="tags"><li>English (C1)</li><li>Hindi</li><li>Kannada</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="divided">
+    <div class="wrap">
+      <div class="section-head"><h2>Experience and education</h2></div>
+
+      <div class="facet">
+        <div class="facet-label"><h3>Work</h3></div>
+        <ol class="facet-body timeline">
+          <li><div class="when">Apr 2025 to now</div><div><h4>Freelance AI/ML and web developer</h4><p>End-to-end web applications and custom AI models for clients.</p></div></li>
+          <li><div class="when">Jun to Dec 2024</div><div><h4>Student Head</h4><p class="org">CHRIST Incubation and Consulting Foundation</p><ul><li>Led 14+ live projects, including 3 international ones, and managed 150+ interns.</li><li>Redesigned the delivery process and improved delivery efficiency by 30%.</li><li>Mentored intern teams on AI implementation projects.</li></ul></div></li>
+          <li><div class="when">Apr to Jun 2024</div><div><h4>Intern</h4><p class="org">Tata Consultancy Services</p><p>Built an accessibility-focused Android app in Flutter and ran the market and UX research behind its features.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="facet">
+        <div class="facet-label"><h3>Education</h3></div>
+        <ol class="facet-body timeline">
+          <li><div class="when">2023 to 2027</div><div><h4>BTech, Artificial Intelligence and Machine Learning</h4><p class="org">CHRIST (Deemed to be University), Bengaluru</p><p>CGPA 3.34 / 4.</p></div></li>
+          <li><div class="when">2026</div><div><h4>MongoDB: From Relational Model (SQL) to the Document Model</h4><p class="org">MongoDB</p></div></li>
+          <li><div class="when">Jan to Apr 2026</div><div><h4>The Joy of Computing using Python, Elite (78%)</h4><p class="org">NPTEL, IIT Madras</p></div></li>
+        </ol>
+      </div>
+
+      <div class="facet">
+        <div class="facet-label"><h3>Beyond the work</h3></div>
+        <ol class="facet-body timeline">
+          <li><div class="when">2024 to 2025</div><div><h4>Chief Editor, INICIA</h4><p>Set editorial direction for the university publication.</p></div></li>
+          <li><div class="when">2024 to 2025</div><div><h4>Workshop facilitator, Python for Data Science</h4><p>Taught hands-on sessions to fellow students.</p></div></li>
+          <li><div class="when">2025 to now</div><div><h4>NASA Space Apps Challenge, CHRIST Incubation Center, IEEE AESS student branch</h4></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="divided contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Have a role or a project in mind?</h2>
+        <p class="lead-sm">Choose what fits and I will draft the email for you. Edit anything, then send it from your own mail app.</p>
+
+        <form id="contact-form" onsubmit="return false">
+          <fieldset class="seg" id="c-intent"><legend>I am writing about</legend></fieldset>
+          <div class="two">
+            <div><label class="field" for="c-name">Your name</label><input type="text" id="c-name" autocomplete="name"></div>
+            <div><label class="field" for="c-org">Company or project</label><input type="text" id="c-org" autocomplete="organization"></div>
+          </div>
+          <label class="field" for="c-msg">Message</label>
+          <textarea id="c-msg" rows="9"></textarea>
+          <div class="actions">
+            <a class="btn primary" id="c-send" href="#">Open in my email app</a>
+            <button class="btn" type="button" id="c-copy">Copy draft</button>
+          </div>
+          <p class="muted" id="c-status" role="status"></p>
+        </form>
+      </div>
+
+      <aside class="reach">
+        <h3>Prefer to go direct?</h3>
+        <ul class="reach-list">
+          <li><a href="mailto:vishnunambiar2006@gmail.com"><b>Email</b><span>vishnunambiar2006@gmail.com</span></a></li>
+          <li><a href="https://www.linkedin.com/in/vishnunambiar"><b>LinkedIn</b><span>linkedin.com/in/vishnunambiar</span></a></li>
+          <li><a href="https://github.com/VishnuNambiar0602"><b>GitHub</b><span>github.com/VishnuNambiar0602</span></a></li>
+        </ul>
+        <h3>Good to know</h3>
+        <dl class="mini">
+          <div><dt>Based in</dt><dd>Bengaluru, India</dd></div>
+          <div><dt>Open to</dt><dd>AI/ML internships, freelance projects</dd></div>
+          <div><dt>Useful details</dt><dd>The role or problem, a timeline, and how you found this site</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap"><span>Vishnu Nambiar, Bengaluru.</span><a href="#top">Back to top</a></div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

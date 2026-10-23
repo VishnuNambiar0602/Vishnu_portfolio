@@ -1,0 +1,17 @@
+Job Title: Generative AI Engineer Intern
+
+About the role
+We are building LLM-powered agents that automate workflows for enterprise customers. You will design multi-agent systems, write evaluation harnesses, and ship them behind REST APIs.
+
+Responsibilities
+- Build and evaluate LLM applications using LangChain and tool calling
+- Design agentic workflows with guardrails, retries and observability
+- Write Python services with FastAPI and pytest tests
+- Work with RAG pipelines, vector databases and embeddings
+- Collaborate with product and design in a fast-moving team
+
+Requirements
+- Strong Python; familiarity with TypeScript is a plus
+- Experience with generative AI, prompt engineering and agents
+- Docker and Git; AWS or GCP is a bonus
+- Excellent communication

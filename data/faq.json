@@ -1,0 +1,344 @@
+[
+  {
+    "id": "who",
+    "keywords": [
+      "who",
+      "vishnu",
+      "about",
+      "introduce",
+      "yourself",
+      "summary",
+      "background",
+      "tell"
+    ],
+    "text": "Vishnu Nambiar is an AI engineer and BTech student in AI and ML at CHRIST (Deemed to be University), Bengaluru, graduating in 2027. He builds explainable models, bounded agents and ML pipelines, and tests his claims before making them."
+  },
+  {
+    "id": "skills",
+    "keywords": [
+      "skills",
+      "tech",
+      "stack",
+      "technologies",
+      "languages",
+      "tools",
+      "python",
+      "know",
+      "good",
+      "expertise"
+    ],
+    "text": "Programming: Python, SQL, TypeScript, JavaScript. ML and AI: PyTorch, TensorFlow, scikit-learn, OpenCV, NLP, LangChain, generative and agentic AI, explainable AI, time-series forecasting. Data: Pandas, NumPy, MongoDB, Neo4j, Redis, advanced Excel. Engineering: MLOps, Docker, GitHub Actions, MLflow, FastAPI, Flask, REST APIs, Git, pytest. Web and mobile: React, Node.js, Flutter."
+  },
+  {
+    "id": "projects",
+    "keywords": [
+      "projects",
+      "built",
+      "work",
+      "portfolio",
+      "demo",
+      "demos",
+      "made",
+      "build",
+      "best"
+    ],
+    "text": "Four projects are on this page, each with a live demo: Medical XAI (explainable symptom checker), the Autonomous Engineering Harness (bounded multi-agent coder), the MLOps Agent (Python model to deployable project) and Restaurant Forecasting (revenue and footfall).",
+    "link": {
+      "label": "Open the projects",
+      "href": "#projects"
+    },
+    "weight": 0.7
+  },
+  {
+    "id": "medical",
+    "keywords": [
+      "medical",
+      "xai",
+      "diagnosis",
+      "symptom",
+      "health",
+      "healthcare",
+      "explainable",
+      "disease",
+      "checker",
+      "tf-idf"
+    ],
+    "text": "Medical XAI ranks 16 conditions from free-text symptoms. Each score blends TF-IDF similarity (60%) with symptom overlap (40%) and is shown as a breakdown. On 15,360 simulated cases the right condition was in the top 3 for 96 to 100% of cases, with p95 latency under 35 ms. These are simulated cases, not clinical validation.",
+    "link": {
+      "label": "Try Medical XAI",
+      "href": "#project-medical"
+    }
+  },
+  {
+    "id": "harness",
+    "keywords": [
+      "harness",
+      "agent",
+      "agents",
+      "multi-agent",
+      "autonomous",
+      "engineering",
+      "coding",
+      "hercules",
+      "loop",
+      "orchestrator",
+      "llm"
+    ],
+    "text": "The Autonomous Engineering Harness is a coding pipeline of architect, worker, validator, executor and reviewer roles run as a state machine. A deterministic validator decides whether a diff is valid, and fixed budgets (2 patches, 1 re-plan) stop runaway loops. It has 10 pytest tests that drive the orchestrator with scripted model replies.",
+    "link": {
+      "label": "Replay a run",
+      "href": "#project-harness"
+    }
+  },
+  {
+    "id": "mlops",
+    "keywords": [
+      "mlops",
+      "pipeline",
+      "pipelines",
+      "docker",
+      "deploy",
+      "deployment",
+      "ci",
+      "cd",
+      "scaffold",
+      "mlflow",
+      "fastapi"
+    ],
+    "text": "The MLOps Agent takes a Python model file and generates a deployable project: FastAPI service, Dockerfile, GitHub Actions and GitLab CI, MLflow hooks, tests and docs. The generated project installs in a clean virtualenv and its 7 tests pass. It generates scaffolds; it does not retrain or version models by itself.",
+    "link": {
+      "label": "Browse the generated files",
+      "href": "#project-mlops"
+    }
+  },
+  {
+    "id": "forecast",
+    "keywords": [
+      "forecast",
+      "forecasting",
+      "sales",
+      "restaurant",
+      "revenue",
+      "footfall",
+      "sarima",
+      "time",
+      "series",
+      "prediction",
+      "regression"
+    ],
+    "text": "Restaurant Forecasting predicts daily revenue with SARIMA and footfall with random forest and gradient boosting. On a 60-day holdout SARIMA cut error from 17.3% to 11.7% MAPE against a seasonal-naive baseline. Those figures come from synthetic data because the original CSV is not in the repository.",
+    "link": {
+      "label": "See the chart",
+      "href": "#project-forecast"
+    }
+  },
+  {
+    "id": "experience",
+    "keywords": [
+      "experience",
+      "job",
+      "jobs",
+      "worked",
+      "employment",
+      "internship",
+      "internships",
+      "career",
+      "history",
+      "freelance",
+      "tcs",
+      "tata"
+    ],
+    "text": "Freelance AI/ML and web developer since April 2025. Student Head at the CHRIST Incubation and Consulting Foundation (June to December 2024). Intern at Tata Consultancy Services (April to June 2024), where he worked on an accessibility-focused Android app in Flutter.",
+    "link": {
+      "label": "See the timeline",
+      "href": "#about"
+    }
+  },
+  {
+    "id": "leadership",
+    "keywords": [
+      "lead",
+      "led",
+      "leadership",
+      "manage",
+      "managed",
+      "team",
+      "interns",
+      "student",
+      "head",
+      "incubation",
+      "cicf",
+      "mentor",
+      "mentoring"
+    ],
+    "text": "As Student Head at the CHRIST Incubation and Consulting Foundation, Vishnu led 14+ live projects, 3 of them international, managed 150+ interns, mentored intern teams on AI projects, and improved delivery efficiency by 30% by redesigning processes."
+  },
+  {
+    "id": "education",
+    "keywords": [
+      "education",
+      "university",
+      "college",
+      "degree",
+      "cgpa",
+      "gpa",
+      "study",
+      "studying",
+      "graduate",
+      "graduation",
+      "btech",
+      "christ"
+    ],
+    "text": "BTech in Artificial Intelligence and Machine Learning at CHRIST (Deemed to be University), Bengaluru, June 2023 to May 2027. CGPA 3.34 out of 4."
+  },
+  {
+    "id": "certs",
+    "keywords": [
+      "certification",
+      "certifications",
+      "certificate",
+      "certificates",
+      "course",
+      "courses",
+      "mongodb",
+      "nptel",
+      "training"
+    ],
+    "text": "MongoDB: From Relational Model (SQL) to MongoDB's Document Model (2026), and NPTEL IIT Madras The Joy of Computing using Python, Elite grade with 78% (January to April 2026)."
+  },
+  {
+    "id": "activities",
+    "keywords": [
+      "editor",
+      "inicia",
+      "workshop",
+      "facilitator",
+      "nasa",
+      "ieee",
+      "activities",
+      "extracurricular",
+      "hackathon",
+      "space"
+    ],
+    "text": "Chief Editor of INICIA, the CHRIST University publication (2024 to 2025). Workshop facilitator for Python for Data Science. Participant in the NASA Space Apps Challenge 2025, and involved with the CHRIST Incubation Center and the IEEE AESS student branch."
+  },
+  {
+    "id": "contact",
+    "keywords": [
+      "contact",
+      "email",
+      "reach",
+      "mail",
+      "linkedin",
+      "github",
+      "touch",
+      "connect",
+      "message",
+      "talk"
+    ],
+    "text": "Email is the fastest way: vishnunambiar2006@gmail.com. He is also on LinkedIn (linkedin.com/in/vishnunambiar) and GitHub (github.com/VishnuNambiar0602).",
+    "link": {
+      "label": "Email Vishnu",
+      "href": "mailto:vishnunambiar2006@gmail.com"
+    }
+  },
+  {
+    "id": "hire",
+    "keywords": [
+      "hire",
+      "hiring",
+      "available",
+      "availability",
+      "internship",
+      "opportunity",
+      "opportunities",
+      "freelance",
+      "open",
+      "looking",
+      "job",
+      "recruit",
+      "recruiter"
+    ],
+    "text": "Vishnu is looking for AI/ML internships and freelance projects, and already works as a freelance AI/ML and web developer. Email him with the role or project and he will reply.",
+    "link": {
+      "label": "Email Vishnu",
+      "href": "mailto:vishnunambiar2006@gmail.com"
+    }
+  },
+  {
+    "id": "resume",
+    "keywords": [
+      "resume",
+      "cv",
+      "download",
+      "curriculum",
+      "vitae",
+      "pdf"
+    ],
+    "text": "Use the Download resume button at the top of this page. It generates a one-page, text-based PDF in your browser."
+  },
+  {
+    "id": "location",
+    "keywords": [
+      "location",
+      "based",
+      "city",
+      "live",
+      "bangalore",
+      "bengaluru",
+      "india",
+      "relocate",
+      "remote"
+    ],
+    "text": "Vishnu is based in Bengaluru, India."
+  },
+  {
+    "id": "languages",
+    "keywords": [
+      "speak",
+      "spoken",
+      "english",
+      "hindi",
+      "kannada",
+      "language",
+      "fluent"
+    ],
+    "text": "English (C1), Hindi (fluent) and Kannada (conversational)."
+  },
+  {
+    "id": "approach",
+    "keywords": [
+      "approach",
+      "philosophy",
+      "how",
+      "methodology",
+      "testing",
+      "tested",
+      "verify",
+      "verified",
+      "metrics",
+      "accuracy",
+      "claims"
+    ],
+    "text": "Vishnu tests the claims he makes. Every number on this site came from running the project, and each project's notes say what was tested and fixed. Where data is synthetic or simulated, the page says so next to the number."
+  },
+  {
+    "id": "site",
+    "keywords": [
+      "site",
+      "website",
+      "built",
+      "made",
+      "tech",
+      "how",
+      "chatbot",
+      "bot",
+      "model",
+      "slm",
+      "llm",
+      "privacy",
+      "data"
+    ],
+    "text": "This site is plain HTML, CSS and JavaScript with no tracking. The demos run in your browser. This chat answers from a fixed set of facts about Vishnu, and nothing you type leaves your browser, including when you turn on the optional on-device language model."
+  }
+]
