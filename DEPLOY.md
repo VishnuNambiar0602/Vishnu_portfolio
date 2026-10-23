@@ -76,7 +76,22 @@ curl -X POST https://medical-xai-api.onrender.com/diagnose \
 export const MEDICAL_API_URL = "https://medical-xai-api.onrender.com";
 ```
 
-The free Render plan puts the service to sleep after about 15 minutes without traffic, and the first request afterwards takes up to a minute to wake it. That is fine for a demo link; say so if you share it with someone.
+### Keeping the free Render service awake
+
+The free plan puts the service to sleep after about 15 minutes without traffic, and the first request afterwards takes up to a minute to wake it. Vercel has no such problem; only the API does. To keep it warm for free, something has to call `/health` more often than every 15 minutes. Pick one:
+
+**A. GitHub Actions (already in this repository).** `.github/workflows/keep-alive.yml` pings every 10 minutes.
+1. GitHub, your repository, **Settings, Secrets and variables, Actions, Variables tab, New repository variable**.
+2. Name `RENDER_URL`, value your Render URL with no trailing slash and no `/health`.
+3. **Actions** tab, **Keep Render API awake**, **Run workflow** once to confirm it goes green.
+
+Limits: GitHub may delay scheduled runs by several minutes at busy times, and it disables scheduled workflows in a repository with no activity for 60 days (push any commit, or re-enable it under Actions, to restart it).
+
+**B. An outside monitor (more punctual).** UptimeRobot (free, 5-minute checks) or cron-job.org (free): create an HTTP monitor or job for `https://<your-service>.onrender.com/health` every 5 to 10 minutes. This does not depend on your repository being active.
+
+Things to know:
+- A free Render workspace gets 750 instance-hours a month. One always-awake service uses about 730, so it fits, but a second always-awake free service would not.
+- Render may change the free tier or its stance on keep-alive pings at any time. If it does, the site still works, because the Medical demo on the portfolio runs in the browser and does not call this API.
 
 ## When something goes wrong
 
