@@ -13,7 +13,7 @@ export async function mount() {
   $("t-stats").replaceChildren(
     `${(s.parameters / 1e6).toFixed(2)}M parameters, ${s.n_layers} layers x ${s.n_heads} heads, ${s.vocab_size} characters. `,
     `Trained for ${s.steps.toLocaleString("en")} steps (${Math.round(s.train_seconds / 60)} min on a laptop GPU) on ${Math.round(s.corpus_chars / 1000)}K characters of this repository's own source. `,
-    `Held-out loss ${s.val_loss} (perplexity ${s.val_perplexity}) against ${s.uniform_loss} for random guessing.`);
+    `Loss on its training text ${s.train_loss}, on held-out text ${s.val_loss} (perplexity ${s.val_perplexity}), against ${s.uniform_loss} for random guessing.`);
 
   const prompt = $("t-prompt"), out = $("t-out"), bars = $("t-next"), status = $("t-status");
   const strategy = $("t-strategy"), temp = $("t-temp"), len = $("t-len"), tempOut = $("t-temp-out"), lenOut = $("t-len-out");

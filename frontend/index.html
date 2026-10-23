@@ -88,16 +88,14 @@
           <ol class="try"><li>Pick an example or tap symptoms.</li><li>Open <em>How this score was built</em> under a result.</li><li>Try the vague example to see the low-confidence message.</li></ol>
           <div class="demo">
             <div class="examples" id="med-examples" role="group" aria-label="Examples"></div>
-            <label class="field" for="med-input">Symptoms, separated by commas</label>
+            <label class="field" for="med-input">Symptoms, separated by commas <small class="muted">Not medical advice</small></label>
             <input type="text" id="med-input" value="fever, cough, sore throat, fatigue" autocomplete="off" spellcheck="false">
             <ul class="chips" id="med-chips" aria-label="Common symptoms"></ul>
             <ol class="results" id="med-results" aria-live="polite"></ol>
-            <p class="callout">Research demo, not medical advice. The scoring code in this page is a port of the project's Python model, and it returned identical rankings and scores on all 65 reference cases I compared.</p>
           </div>
           <div class="demo">
-            <h4>How well does it recover the right condition?</h4>
+            <h4>How well does it recover the right condition? (simulated cases)</h4>
             <div class="table-wrap"><table id="med-bench"></table></div>
-            <p class="callout">There is no labelled clinical dataset in the repository, so these cases are simulated from the knowledge base itself: pick symptoms from a condition, optionally swap in synonyms or add unrelated symptoms, then check the ranking. This measures consistency, not diagnostic accuracy. Reproduce with <code>python benchmark.py</code>.</p>
           </div>
           <div class="notes">
             <h4>Checked while preparing this page</h4>
@@ -151,7 +149,6 @@
               </div>
             </div>
             <p class="callout" id="t-stats"></p>
-            <p class="callout">It writes code-shaped text, not working code. It learned from a small corpus and partly memorised it: the training loss is well below the held-out loss. The point is that every number inside it is visible.</p>
           </div>
           <div class="notes">
             <h4>What I tested and fixed</h4>
@@ -174,7 +171,7 @@
           </header>
           <ol class="try"><li>Set tomorrow's conditions on the left.</li><li>Read the forecast and what pushed it up or down.</li><li>Switch the promotion or weather and compare.</li></ol>
           <div class="demo">
-            <h4>Forecast tomorrow</h4>
+            <h4>Forecast tomorrow (model trained on synthetic data)</h4>
             <form class="fc" id="fc-form" onsubmit="return false">
               <div class="fc-inputs">
                 <div class="row2">
@@ -206,7 +203,6 @@
                 <div class="table-wrap"><table id="fc-effects"></table></div>
               </div>
             </form>
-            <p class="callout">The model here is the project's gradient-boosting regressor, exported from Python and run in your browser (it matched scikit-learn on all 60 reference cases). It was trained on synthetic data, so treat the numbers as a demonstration of the method.</p>
           </div>
           <div class="demo">
             <h4>How well does the revenue model track? Last 120 days, final 60 held out</h4>
@@ -281,7 +277,6 @@
                 <h5>requirements.txt</h5><pre tabindex="0"><code id="m-req"></code></pre>
               </div>
             </div>
-            <p class="callout">This is a browser port of the agent's dependency step, checked against Python's own parser on 6 reference files. The full agent also writes the API, Docker, CI and test files below; run it from the command line with <code>node dist/cli.js model.py</code>.</p>
           </div>
           <div class="demo">
             <h4>The project it generated from <code>sample_model.py</code></h4>

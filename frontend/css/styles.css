@@ -337,3 +337,5 @@ body.machine .site-header .wrap { justify-content: space-between; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+label.field small { font-weight: 400; font-size: 0.875rem; }
