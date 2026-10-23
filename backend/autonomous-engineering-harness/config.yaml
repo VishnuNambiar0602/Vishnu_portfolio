@@ -1,0 +1,36 @@
+# Models are intentionally isolated by node. Change these without touching orchestration code.
+models:
+  architect: deepseek/deepseek-r1
+  coder: qwen/qwen-2.5-coder-32b-instruct
+  executor: qwen/qwen2.5-coder-7b-instruct
+  reviewer: qwen/qwen3-coder
+
+limits:
+  max_architecture_replans: 1
+  max_worker_patches: 2
+  max_environment_retries: 2
+  max_commands_per_task: 12
+  max_command_seconds: 120
+  max_output_chars: 30000
+  max_files_in_context: 40
+  max_file_chars: 24000
+
+safety:
+  dry_run_by_default: true
+  allow_git_push: false
+  allow_network_commands: false
+  deny_patterns:
+    - "rm -rf /"
+    - "rm -rf ~"
+    - "mkfs"
+    - "dd if="
+    - ":(){ :|:& };:"
+    - "shutdown"
+    - "reboot"
+    - "poweroff"
+    - "git reset --hard"
+
+review:
+  # The critic is deliberately bounded: it may PASS, PATCH or BLOCK, but cannot redesign.
+  max_issues: 12
+  require_tests_for_code_changes: true

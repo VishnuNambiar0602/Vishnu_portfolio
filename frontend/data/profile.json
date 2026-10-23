@@ -1,0 +1,905 @@
+{
+  "name": "Vishnu Nambiar",
+  "location": "Bengaluru, India",
+  "email": "vishnunambiar2006@gmail.com",
+  "phone": "+91 8848799780",
+  "linkedin": "linkedin.com/in/vishnunambiar",
+  "github": "github.com/VishnuNambiar0602",
+  "headlines": [
+    {
+      "title": "AI/ML Engineer",
+      "when": [
+        "ai",
+        "ml",
+        "machine learning",
+        "artificial intelligence",
+        "deep learning",
+        "llm",
+        "agentic",
+        "generative"
+      ]
+    },
+    {
+      "title": "Machine Learning Engineer",
+      "when": [
+        "machine learning engineer",
+        "ml engineer",
+        "mlops",
+        "model deployment"
+      ]
+    },
+    {
+      "title": "Data Analyst",
+      "when": [
+        "data analyst",
+        "business analyst",
+        "business intelligence",
+        "dashboards",
+        "dashboard",
+        "reporting"
+      ]
+    },
+    {
+      "title": "Data Scientist",
+      "when": [
+        "data scientist",
+        "data science",
+        "statistics",
+        "forecasting",
+        "analytics"
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "when": [
+        "software engineer",
+        "full stack",
+        "full-stack",
+        "backend",
+        "frontend",
+        "web developer"
+      ]
+    }
+  ],
+  "defaultHeadline": "AI/ML Engineer",
+  "education": [
+    {
+      "school": "CHRIST (Deemed to be University), Bengaluru",
+      "degree": "BTech, Artificial Intelligence and Machine Learning",
+      "dates": "Jun 2023 – May 2027",
+      "detail": "CGPA 3.34 / 4.0"
+    }
+  ],
+  "summaryFacts": [
+    {
+      "text": "Builds explainable models, agent pipelines and MLOps tooling, and benchmarks and tests every result.",
+      "tags": [
+        "explainable",
+        "agentic",
+        "mlops",
+        "evaluation",
+        "ml"
+      ]
+    },
+    {
+      "text": "Ships end to end, from data and models through APIs, containers and CI to a working interface.",
+      "tags": [
+        "full-stack",
+        "api",
+        "docker",
+        "deployment",
+        "web"
+      ]
+    },
+    {
+      "text": "Led 14+ live projects and 150+ interns at the CHRIST Incubation and Consulting Foundation.",
+      "tags": [
+        "leadership",
+        "management",
+        "team",
+        "mentoring",
+        "stakeholder"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "org": "Freelance",
+      "role": "AI/ML and Web Developer",
+      "dates": "Apr 2025 – Present",
+      "bullets": [
+        {
+          "text": "Deliver end-to-end web applications and custom AI models for clients, from requirements through deployment.",
+          "tags": [
+            "freelance",
+            "full-stack",
+            "web",
+            "ml",
+            "client",
+            "api"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "CHRIST Incubation and Consulting Foundation, Bengaluru",
+      "role": "Student Head",
+      "dates": "Jun 2024 – Dec 2024",
+      "bullets": [
+        {
+          "text": "Led 14+ live projects, including 3 international projects and AI implementations, and managed 150+ interns.",
+          "tags": [
+            "leadership",
+            "management",
+            "team",
+            "project management",
+            "stakeholder",
+            "ai"
+          ]
+        },
+        {
+          "text": "Improved delivery efficiency by 30% by redesigning processes and coordinating across teams.",
+          "tags": [
+            "process",
+            "efficiency",
+            "cross-functional",
+            "collaboration",
+            "delivery"
+          ]
+        },
+        {
+          "text": "Mentored intern teams on AI implementation projects to keep quality consistent and deadlines met.",
+          "tags": [
+            "mentoring",
+            "quality",
+            "ai",
+            "team",
+            "coaching"
+          ]
+        }
+      ]
+    },
+    {
+      "org": "Tata Consultancy Services (TCS)",
+      "role": "Intern",
+      "dates": "Apr 2024 – Jun 2024",
+      "bullets": [
+        {
+          "text": "Worked on an accessibility-focused Android app in Flutter.",
+          "tags": [
+            "flutter",
+            "android",
+            "mobile",
+            "accessibility"
+          ]
+        },
+        {
+          "text": "Conducted market and UX research that shaped the app's accessibility features.",
+          "tags": [
+            "research",
+            "ux",
+            "user research",
+            "product"
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Medical Diagnosis System with Explainable AI",
+      "stack": "Python, scikit-learn, Flask, React",
+      "dates": "Jan 2026",
+      "link": "vishnu-portfolio/backend/medical-xai",
+      "tags": [
+        "nlp",
+        "explainable",
+        "xai",
+        "healthcare",
+        "tf-idf",
+        "scikit-learn",
+        "flask",
+        "react",
+        "api",
+        "python"
+      ],
+      "bullets": [
+        {
+          "text": "Ranked the right condition in the top 3 for 96–100% of 15,360 simulated cases, with p95 latency under 35 ms, using a transparent score: TF-IDF similarity (60%) plus symptom overlap (40%).",
+          "tags": [
+            "nlp",
+            "tf-idf",
+            "explainable",
+            "xai",
+            "scikit-learn",
+            "python",
+            "healthcare",
+            "evaluation",
+            "benchmark",
+            "latency",
+            "metrics"
+          ]
+        },
+        {
+          "text": "Built the Flask API and React interface behind it, with per-condition score breakdowns, confidence thresholds and clarifying questions; ported the scorer to JavaScript with identical output on 65 reference cases.",
+          "tags": [
+            "api",
+            "flask",
+            "react",
+            "rest",
+            "full-stack",
+            "javascript",
+            "testing"
+          ]
+        }
+      ],
+      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/medical-xai"
+    },
+    {
+      "name": "Autonomous Engineering Harness",
+      "stack": "Python, OpenRouter, Pydantic, pytest",
+      "dates": "Sep 2026",
+      "link": "vishnu-portfolio/backend/autonomous-engineering-harness",
+      "tags": [
+        "agentic",
+        "llm",
+        "multi-agent",
+        "agents",
+        "generative ai",
+        "python",
+        "safety",
+        "testing"
+      ],
+      "bullets": [
+        {
+          "text": "Stopped runaway agent loops by design: a state machine with fixed budgets (2 patches, 1 re-plan) across architect, worker, validator, executor and reviewer roles halts with saved evidence instead of retrying forever.",
+          "tags": [
+            "agentic",
+            "multi-agent",
+            "llm",
+            "agents",
+            "orchestration",
+            "generative ai",
+            "guardrails",
+            "reliability"
+          ]
+        },
+        {
+          "text": "Made validity deterministic rather than model-judged (git apply --check, command deny-list), and wrote 10 pytest tests that drive the orchestrator with scripted model replies; found and fixed retry and halt defects.",
+          "tags": [
+            "safety",
+            "validation",
+            "testing",
+            "pytest",
+            "debugging",
+            "quality",
+            "git"
+          ]
+        }
+      ],
+      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/autonomous-engineering-harness"
+    },
+    {
+      "name": "MLOps Pipelines AI Agent",
+      "stack": "TypeScript, Python, Docker, GitHub Actions",
+      "dates": "Dec 2025",
+      "link": "vishnu-portfolio/backend/mlops-agent",
+      "tags": [
+        "mlops",
+        "docker",
+        "ci/cd",
+        "fastapi",
+        "mlflow",
+        "agentic",
+        "typescript",
+        "deployment",
+        "automation"
+      ],
+      "bullets": [
+        {
+          "text": "Turned a Python model file into a deployable project in one command: FastAPI service, Dockerfile, GitHub Actions and GitLab CI, MLflow hooks, tests and docs (20 files).",
+          "tags": [
+            "mlops",
+            "docker",
+            "ci/cd",
+            "fastapi",
+            "mlflow",
+            "deployment",
+            "automation",
+            "agentic"
+          ]
+        },
+        {
+          "text": "Verified the output in a clean virtualenv (7 of 7 generated tests pass) and fixed a bug that wrote sklearn instead of scikit-learn to requirements, with unit tests for the fix.",
+          "tags": [
+            "testing",
+            "debugging",
+            "python",
+            "quality",
+            "reproducible"
+          ]
+        },
+        {
+          "text": "Parses imports with Python's AST, maps import names to PyPI packages and retries rate-limited LLM calls.",
+          "tags": [
+            "llm",
+            "typescript",
+            "python",
+            "reliability",
+            "api"
+          ]
+        }
+      ],
+      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/mlops-agent"
+    },
+    {
+      "name": "Sales Forecasting System",
+      "stack": "Python, statsmodels, scikit-learn, pandas",
+      "dates": "Aug 2025",
+      "link": "vishnu-portfolio/backend/restaurant-forecasting",
+      "tags": [
+        "forecasting",
+        "time series",
+        "regression",
+        "feature engineering",
+        "pandas",
+        "scikit-learn",
+        "analytics",
+        "python"
+      ],
+      "bullets": [
+        {
+          "text": "Cut revenue forecast error from 17.3% to 11.7% MAPE against a seasonal-naive baseline on a 60-day holdout, using SARIMA (synthetic data).",
+          "tags": [
+            "forecasting",
+            "time series",
+            "sarima",
+            "statsmodels",
+            "evaluation",
+            "regression",
+            "analytics"
+          ]
+        },
+        {
+          "text": "Predicted daily footfall at 9.0% MAPE versus 14.8% for last week's value with gradient boosting; removed a revenue-leakage feature and moved to time-ordered splits.",
+          "tags": [
+            "feature engineering",
+            "regression",
+            "scikit-learn",
+            "evaluation",
+            "ml",
+            "data leakage",
+            "random forest"
+          ]
+        },
+        {
+          "text": "Packaged the pipeline as a CLI with schema validation and 6 passing tests, so it runs on any CSV with the same columns.",
+          "tags": [
+            "testing",
+            "pandas",
+            "python",
+            "cli",
+            "reproducible"
+          ]
+        }
+      ],
+      "url": "https://github.com/VishnuNambiar0602/vishnu-portfolio/tree/main/backend/restaurant-forecasting"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Programming",
+      "items": [
+        {
+          "name": "Python",
+          "aliases": [
+            "python"
+          ]
+        },
+        {
+          "name": "SQL",
+          "aliases": [
+            "sql",
+            "mysql",
+            "postgresql",
+            "postgres"
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "aliases": [
+            "typescript"
+          ]
+        },
+        {
+          "name": "JavaScript",
+          "aliases": [
+            "javascript",
+            "js",
+            "node.js",
+            "nodejs"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "ML and AI",
+      "items": [
+        {
+          "name": "PyTorch",
+          "aliases": [
+            "pytorch",
+            "torch"
+          ]
+        },
+        {
+          "name": "TensorFlow",
+          "aliases": [
+            "tensorflow",
+            "keras"
+          ]
+        },
+        {
+          "name": "scikit-learn",
+          "aliases": [
+            "scikit-learn",
+            "sklearn",
+            "scikit learn"
+          ]
+        },
+        {
+          "name": "OpenCV",
+          "aliases": [
+            "opencv",
+            "computer vision"
+          ]
+        },
+        {
+          "name": "CNNs",
+          "aliases": [
+            "cnn",
+            "convolutional"
+          ]
+        },
+        {
+          "name": "NLP",
+          "aliases": [
+            "nlp",
+            "natural language processing",
+            "text mining"
+          ]
+        },
+        {
+          "name": "LLM applications",
+          "aliases": [
+            "llm",
+            "llms",
+            "large language model",
+            "large language models",
+            "prompt engineering"
+          ]
+        },
+        {
+          "name": "LangChain",
+          "aliases": [
+            "langchain"
+          ]
+        },
+        {
+          "name": "Generative AI",
+          "aliases": [
+            "generative ai",
+            "genai",
+            "gen ai"
+          ]
+        },
+        {
+          "name": "Agentic AI",
+          "aliases": [
+            "agentic",
+            "ai agents",
+            "autonomous agents",
+            "multi-agent",
+            "agent"
+          ]
+        },
+        {
+          "name": "Explainable AI",
+          "aliases": [
+            "explainable ai",
+            "xai",
+            "interpretability",
+            "explainability"
+          ]
+        },
+        {
+          "name": "Time-series forecasting",
+          "aliases": [
+            "time series",
+            "time-series",
+            "forecasting",
+            "sarima",
+            "arima"
+          ]
+        },
+        {
+          "name": "Feature engineering",
+          "aliases": [
+            "feature engineering"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Data and MLOps",
+      "items": [
+        {
+          "name": "Pandas",
+          "aliases": [
+            "pandas"
+          ]
+        },
+        {
+          "name": "NumPy",
+          "aliases": [
+            "numpy"
+          ]
+        },
+        {
+          "name": "statsmodels",
+          "aliases": [
+            "statsmodels"
+          ]
+        },
+        {
+          "name": "MongoDB",
+          "aliases": [
+            "mongodb",
+            "nosql"
+          ]
+        },
+        {
+          "name": "Neo4j",
+          "aliases": [
+            "neo4j",
+            "graph database"
+          ]
+        },
+        {
+          "name": "Redis",
+          "aliases": [
+            "redis"
+          ]
+        },
+        {
+          "name": "Data analytics",
+          "aliases": [
+            "data analytics",
+            "data analysis",
+            "analytics"
+          ]
+        },
+        {
+          "name": "Excel (advanced)",
+          "aliases": [
+            "excel"
+          ]
+        },
+        {
+          "name": "MLOps",
+          "aliases": [
+            "mlops",
+            "ml ops",
+            "model deployment",
+            "model serving"
+          ]
+        },
+        {
+          "name": "Docker",
+          "aliases": [
+            "docker",
+            "containers",
+            "containerization"
+          ]
+        },
+        {
+          "name": "GitHub Actions",
+          "aliases": [
+            "github actions",
+            "ci/cd",
+            "cicd",
+            "continuous integration"
+          ]
+        },
+        {
+          "name": "MLflow",
+          "aliases": [
+            "mlflow",
+            "experiment tracking"
+          ]
+        },
+        {
+          "name": "FastAPI",
+          "aliases": [
+            "fastapi"
+          ]
+        },
+        {
+          "name": "Flask",
+          "aliases": [
+            "flask"
+          ]
+        },
+        {
+          "name": "REST APIs",
+          "aliases": [
+            "rest",
+            "restful",
+            "api",
+            "apis"
+          ]
+        },
+        {
+          "name": "Git",
+          "aliases": [
+            "git",
+            "github",
+            "version control"
+          ]
+        },
+        {
+          "name": "pytest",
+          "aliases": [
+            "pytest",
+            "unit testing",
+            "test automation"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Web and mobile",
+      "items": [
+        {
+          "name": "React",
+          "aliases": [
+            "react",
+            "reactjs",
+            "react.js"
+          ]
+        },
+        {
+          "name": "Node.js and Express",
+          "aliases": [
+            "express",
+            "node.js",
+            "nodejs",
+            "node"
+          ]
+        },
+        {
+          "name": "Flutter",
+          "aliases": [
+            "flutter",
+            "dart"
+          ]
+        }
+      ]
+    }
+  ],
+  "gapTerms": [
+    {
+      "name": "Java",
+      "aliases": [
+        "java"
+      ]
+    },
+    {
+      "name": "C++",
+      "aliases": [
+        "c++",
+        "cpp"
+      ]
+    },
+    {
+      "name": "AWS",
+      "aliases": [
+        "aws",
+        "amazon web services",
+        "sagemaker",
+        "ec2"
+      ]
+    },
+    {
+      "name": "Azure",
+      "aliases": [
+        "azure"
+      ]
+    },
+    {
+      "name": "GCP",
+      "aliases": [
+        "gcp",
+        "google cloud",
+        "vertex ai"
+      ]
+    },
+    {
+      "name": "Kubernetes",
+      "aliases": [
+        "kubernetes",
+        "k8s"
+      ]
+    },
+    {
+      "name": "Spark",
+      "aliases": [
+        "spark",
+        "pyspark",
+        "databricks",
+        "hadoop"
+      ]
+    },
+    {
+      "name": "Airflow",
+      "aliases": [
+        "airflow",
+        "dagster",
+        "prefect"
+      ]
+    },
+    {
+      "name": "Hugging Face / Transformers",
+      "aliases": [
+        "hugging face",
+        "huggingface",
+        "transformers",
+        "bert",
+        "fine-tuning",
+        "fine tuning",
+        "lora"
+      ]
+    },
+    {
+      "name": "RAG and vector databases",
+      "aliases": [
+        "rag",
+        "retrieval augmented",
+        "retrieval-augmented",
+        "vector database",
+        "pinecone",
+        "faiss",
+        "embeddings"
+      ]
+    },
+    {
+      "name": "Tableau / Power BI",
+      "aliases": [
+        "tableau",
+        "power bi",
+        "powerbi",
+        "looker"
+      ]
+    },
+    {
+      "name": "Go or Rust",
+      "aliases": [
+        "golang",
+        "rust"
+      ]
+    },
+    {
+      "name": "Kafka / streaming",
+      "aliases": [
+        "kafka",
+        "streaming"
+      ]
+    },
+    {
+      "name": "Terraform",
+      "aliases": [
+        "terraform",
+        "infrastructure as code"
+      ]
+    },
+    {
+      "name": "A/B testing",
+      "aliases": [
+        "a/b test",
+        "ab testing",
+        "experimentation",
+        "causal inference",
+        "a/b testing",
+        "a/b tests"
+      ]
+    },
+    {
+      "name": "Reinforcement learning",
+      "aliases": [
+        "reinforcement learning"
+      ]
+    },
+    {
+      "name": "PhD / publications",
+      "aliases": [
+        "phd",
+        "publications",
+        "published research"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "From Relational Model (SQL) to MongoDB's Document Model",
+      "issuer": "MongoDB",
+      "date": "2026"
+    },
+    {
+      "name": "The Joy of Computing using Python (Elite, 78%)",
+      "issuer": "NPTEL, IIT Madras",
+      "date": "Jan – Apr 2026"
+    }
+  ],
+  "activities": [
+    {
+      "role": "Chief Editor",
+      "org": "INICIA, CHRIST University",
+      "dates": "Jun 2024 – Mar 2025",
+      "text": "Led editorial direction and content strategy for the university publication.",
+      "tags": [
+        "leadership",
+        "communication",
+        "writing",
+        "content"
+      ]
+    },
+    {
+      "role": "Workshop Facilitator",
+      "org": "Python for Data Science, CHRIST University",
+      "dates": "Nov 2024 – Mar 2025",
+      "text": "Taught hands-on Python for data science sessions to student participants.",
+      "tags": [
+        "teaching",
+        "mentoring",
+        "python",
+        "data science",
+        "communication"
+      ]
+    },
+    {
+      "role": "",
+      "org": "NASA Space Apps Challenge 2025",
+      "dates": "Aug 2025",
+      "text": "",
+      "tags": [
+        "hackathon",
+        "nasa",
+        "space",
+        "innovation"
+      ]
+    },
+    {
+      "role": "",
+      "org": "IEEE AESS, CHRIST University Student Branch",
+      "dates": "Feb 2026 – Present",
+      "text": "",
+      "tags": [
+        "ieee",
+        "community"
+      ]
+    },
+    {
+      "role": "",
+      "org": "CHRIST Incubation Center, Kengeri",
+      "dates": "Jun 2025 – Present",
+      "text": "",
+      "tags": [
+        "incubation",
+        "startup"
+      ]
+    }
+  ],
+  "languages": "English (C1), Hindi (fluent), Kannada (conversational)",
+  "spoken": "English (C1), Hindi (fluent), Kannada (conversational)",
+  "summaryGeneric": "Builds explainable models, agent pipelines and MLOps tooling, and benchmarks and tests every result. Led 14+ live projects and 150+ interns at the CHRIST Incubation and Consulting Foundation."
+}

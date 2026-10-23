@@ -1,12 +1,15 @@
 node_modules/
+dist/
+builds/
+runs/
 __pycache__/
 *.pyc
 .pytest_cache/
+*.egg-info/
 .venv/
-builds/
-dist/
-runs/
 .env
 *.pem
-js/private/
+
+# Owner-only tools and notes: never published
+frontend/js/private/
 PRIVATE.md

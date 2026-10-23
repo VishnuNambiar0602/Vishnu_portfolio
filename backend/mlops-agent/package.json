@@ -1,0 +1,44 @@
+{
+  "name": "mlops-automation-agent",
+  "version": "1.0.0",
+  "description": "Autonomous MLOps automation agent that generates deployment scaffolds from Python model files",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "mlops-agent": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts"
+  },
+  "keywords": [
+    "mlops",
+    "automation",
+    "agent",
+    "deployment",
+    "docker",
+    "cicd"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@openrouter/sdk": "^0.1.0",
+    "archiver": "^7.0.1",
+    "dotenv": "^17.2.3",
+    "nunjucks": "^3.2.4",
+    "openai": "^6.15.0",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.2",
+    "@types/node": "^20.11.0",
+    "@types/nunjucks": "^3.2.6",
+    "fast-check": "^3.15.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

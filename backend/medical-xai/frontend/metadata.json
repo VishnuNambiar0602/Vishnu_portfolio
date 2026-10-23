@@ -1,0 +1,8 @@
+
+{
+  "name": "Medical AI Assessment Suite",
+  "description": "A sophisticated AI-powered medical assessment platform for analyzing symptoms and providing preliminary health insights.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
