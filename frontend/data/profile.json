@@ -122,6 +122,31 @@
       ]
     },
     {
+      "org": "Tata Consultancy Services (TCS)",
+      "role": "Intern",
+      "dates": "Apr 2025 – Jun 2025",
+      "bullets": [
+        {
+          "text": "Worked on an accessibility-focused Android app in Flutter.",
+          "tags": [
+            "flutter",
+            "android",
+            "mobile",
+            "accessibility"
+          ]
+        },
+        {
+          "text": "Conducted market and UX research that shaped the app's accessibility features.",
+          "tags": [
+            "research",
+            "ux",
+            "user research",
+            "product"
+          ]
+        }
+      ]
+    },
+    {
       "org": "CHRIST Incubation and Consulting Foundation, Bengaluru",
       "role": "Student Head",
       "dates": "Jun 2024 – Dec 2024",
@@ -156,31 +181,6 @@
             "ai",
             "team",
             "coaching"
-          ]
-        }
-      ]
-    },
-    {
-      "org": "Tata Consultancy Services (TCS)",
-      "role": "Intern",
-      "dates": "Apr 2024 – Jun 2024",
-      "bullets": [
-        {
-          "text": "Worked on an accessibility-focused Android app in Flutter.",
-          "tags": [
-            "flutter",
-            "android",
-            "mobile",
-            "accessibility"
-          ]
-        },
-        {
-          "text": "Conducted market and UX research that shaped the app's accessibility features.",
-          "tags": [
-            "research",
-            "ux",
-            "user research",
-            "product"
           ]
         }
       ]
