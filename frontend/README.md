@@ -26,7 +26,7 @@ See the root README: push the whole repository, set Pages to GitHub Actions, and
 ## Resume and chat
 
 - **Download resume** (hero button) builds a one-page, text-based PDF in the browser from `data/profile.json`. Edit that file to change any fact; nothing else holds resume content.
-- **Chat** answers visitor questions from `data/faq.json` (retrieval only, so it cannot invent facts). An opt-in on-device model (Qwen2.5-0.5B via WebLLM, WebGPU) can phrase answers from the same facts.
+- **Chat** answers visitor questions from the verified facts in `data/faq.json`. A small on-device language model (MiniLM, via Transformers.js, about 25 MB, WebAssembly) matches each question to a fact by meaning, blended with keyword matching. It never generates text, so it cannot invent anything. A 0.5B generative model (Qwen2.5-0.5B) was tested and rejected because it ignored the supplied facts and made things up.
 - The phone number is in `profile.json` but deliberately not printed on the PDF. Add it in `js/resume/tailor.js` (`contact`) if you want it.
 
 ## Tests and regenerating data

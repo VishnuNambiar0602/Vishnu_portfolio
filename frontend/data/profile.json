@@ -900,7 +900,7 @@
       ]
     }
   ],
-  "languages": "English (C1), Hindi (fluent), Kannada (conversational)",
-  "spoken": "English (C1), Hindi (fluent), Kannada (conversational)",
+  "languages": "English (C1), Hindi (fluent), Malayalam",
+  "spoken": "English (C1), Hindi (fluent), Malayalam",
   "summaryGeneric": "Builds explainable models, agent pipelines and MLOps tooling, and benchmarks and tests every result. Led 14+ live projects and 150+ interns at the CHRIST Incubation and Consulting Foundation."
 }

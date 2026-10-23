@@ -25,9 +25,14 @@
       "python",
       "know",
       "good",
-      "expertise"
+      "expertise",
+      "llm",
+      "llms",
+      "models",
+      "large",
+      "language"
     ],
-    "text": "Programming: Python, SQL, TypeScript, JavaScript. ML and AI: PyTorch, TensorFlow, scikit-learn, OpenCV, NLP, LangChain, generative and agentic AI, explainable AI, time-series forecasting. Data: Pandas, NumPy, MongoDB, Neo4j, Redis, advanced Excel. Engineering: MLOps, Docker, GitHub Actions, MLflow, FastAPI, Flask, REST APIs, Git, pytest. Web and mobile: React, Node.js, Flutter."
+    "text": "Programming: Python, SQL, TypeScript, JavaScript. ML and AI: PyTorch, TensorFlow, scikit-learn, OpenCV, NLP, LangChain, large language model (LLM) applications, generative and agentic AI, explainable AI, time-series forecasting. Data: Pandas, NumPy, MongoDB, Neo4j, Redis, advanced Excel. Engineering: MLOps, Docker, GitHub Actions, MLflow, FastAPI, Flask, REST APIs, Git, pytest. Web and mobile: React, Node.js, Flutter."
   },
   {
     "id": "projects",
@@ -82,7 +87,14 @@
       "hercules",
       "loop",
       "orchestrator",
-      "llm"
+      "llm",
+      "safe",
+      "safety",
+      "guardrails",
+      "reliable",
+      "reliability",
+      "limits",
+      "budgets"
     ],
     "text": "The Autonomous Engineering Harness is a coding pipeline of architect, worker, validator, executor and reviewer roles run as a state machine. A deterministic validator decides whether a diff is valid, and fixed budgets (2 patches, 1 re-plan) stop runaway loops. It has 10 pytest tests that drive the orchestrator with scripted model replies.",
     "link": {
@@ -299,11 +311,11 @@
       "spoken",
       "english",
       "hindi",
-      "kannada",
+      "malayalam",
       "language",
       "fluent"
     ],
-    "text": "English (C1), Hindi (fluent) and Kannada (conversational)."
+    "text": "English (C1), Hindi (fluent) and Malayalam."
   },
   {
     "id": "approach",
@@ -339,6 +351,6 @@
       "privacy",
       "data"
     ],
-    "text": "This site is plain HTML, CSS and JavaScript with no tracking. The demos run in your browser. This chat answers from a fixed set of facts about Vishnu, and nothing you type leaves your browser, including when you turn on the optional on-device language model."
+    "text": "This site is plain HTML, CSS and JavaScript with no tracking. The demos run in your browser. This chat uses a small on-device language model (MiniLM) to match your question to verified facts about Vishnu by meaning, so every answer is a fact and nothing is invented. Nothing you type leaves your browser."
   }
 ]

@@ -42,20 +42,41 @@ export function retrieve(index, query, k = 3) {
   return scored.slice(0, k);
 }
 
+const NO_MATCH = "I only know what is on this site, and I could not match that. Try asking about his projects, skills, experience, education or contact details.";
 const GREETING = /^(hi|hello|hey|yo|hola|good (morning|afternoon|evening)|namaste)\b/i;
 const THANKS = /^(thanks|thank you|thx|cheers)\b/i;
 
-export function reply(index, query) {
+// Blend semantic similarity (from the on-device model) with the keyword score. The weights come from
+// tests/chat_cases.json. The floor declines a question when the language model finds nothing it is
+// even loosely similar to: off-topic questions peaked at 0.17 and on-topic ones started at 0.21.
+export const FUSION = { keywordWeight: 0.04, threshold: 0.24, floor: 0.19 };
+
+export function fuse(index, query, sims) {
+  const hits = retrieve(index, query, 99);
+  const kw = new Map(hits.map((h) => [h.f.id, h.score]));
+  return index.docs
+    .map((d, i) => ({ f: d.f, score: (sims[i] + FUSION.keywordWeight * (kw.get(d.f.id) || 0)) * (d.f.weight ?? 1) }))
+    .sort((a, b) => b.score - a.score);
+}
+
+export function reply(index, query, sims = null) {
   const text = query.trim();
   if (GREETING.test(text) && text.split(/\s+/).length <= 4) {
     return { text: "Hi. I can answer questions about Vishnu's projects, skills, experience, education and how to contact him. What would you like to know?", hits: [] };
   }
   if (THANKS.test(text)) return { text: "You're welcome.", hits: [] };
+  if (sims) {
+    const ranked = fuse(index, text, sims);
+    // Keywords vouch for a question when most of its words matched a fact (e.g. a rare term like "PyTorch").
+    const vouched = retrieve(index, text, 1).some((h) => h.coverage >= 0.5 && h.score >= 1.5);
+    if ((Math.max(...sims) < FUSION.floor && !vouched) || ranked[0].score < FUSION.threshold) return { text: NO_MATCH, hits: [] };
+    return { text: ranked[0].f.text, link: ranked[0].f.link, hits: ranked.slice(0, 3) };
+  }
   const hits = retrieve(index, text, 3);
   const MIN = 1.5;
   const weak = hits.length && hits[0].terms >= 3 && hits[0].coverage < 0.4; // one stray word in a long off-topic question
   if (!hits.length || hits[0].score < MIN || weak) {
-    return { text: "I only know what is on this site, and I could not match that. Try asking about his projects, skills, experience, education or contact details.", hits: [] };
+    return { text: NO_MATCH, hits: [] };
   }
   return { text: hits[0].f.text, link: hits[0].f.link, hits };
 }
